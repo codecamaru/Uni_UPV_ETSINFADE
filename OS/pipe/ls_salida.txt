@@ -1,0 +1,37 @@
+// redir_output.c
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+int main (int argc,char *argv[]) {
+    int fd;
+    char *arch = "ls_salida.txt";
+    mode_t fd_mode = S_IRWXU;// file premissions
+
+    fd = open(arch,O_RDWR | O_CREAT,fd_mode);
+    if (dup2(fd,STDOUT_FILENO) == -1) { 
+        printf("Error calling dup2\n");
+        exit(-1);
+    }
+    if (execl("/bin/cat","cat",argv[1],NULL) < 0){
+        printf("error");
+    };
+    
+    close(fd);
+    return(0);
+}
+
+
+:47 descriptor_output.c
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es 8696 nov 29 16:46 ls_redir
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es  662 nov 29 16:45 ls_redir.c
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es    0 nov 29  2020 ls_salida.txt
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es   47 nov 29 15:10 messages.txt
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es   23 nov 29 16:12 output.txt
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es 8656 nov 29 16:11 redir_output
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es  622 nov 29 13:46 redir_output.c
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es 8560 nov 29 15:10 share_file
+-rwxr-xr-x 1 camaru@alumno.upv.es camaru@alumno.upv.es  693 nov 29 13:46 share_file.c
