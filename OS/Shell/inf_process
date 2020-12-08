@@ -1,0 +1,4 @@
+#!/bin/bash
+# inf_processes
+echo -e "PID\tPPID\tESTADO\tCOMANDO\n"
+echo -e "$1\t$(awk '/PPid:/ { print $2}' /proc/$1/status)\t$(awk '/State:/ { print $2}' /proc/$1/status)\t$(awk '{ print}' /proc/$1/cmdline)"
