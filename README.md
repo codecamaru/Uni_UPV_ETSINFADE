@@ -1,2 +1,2 @@
 # Uni
-Some code files I developed during lab sessions  from my university subjects
+Some code files I developed while studying for my university subjects and during lab sessions 
