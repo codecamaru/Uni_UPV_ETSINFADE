@@ -43,6 +43,8 @@ int main(int argc,char *argv[]){
     if(readbytes == -1){
         fprintf(stderr,"Could not read %s because %s", argv[2],strerror(errno));
     }
-    close(fd1);
-    close(fd2);
+    int c1 = close(fd1);
+    printf("New pointer position position access is %d\n",c1);
+    int c2 = close(fd2);
+    printf("New pointer position position access is %d\n",c2);
 }
