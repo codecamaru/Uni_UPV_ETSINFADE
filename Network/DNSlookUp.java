@@ -11,8 +11,8 @@ public class DNSlookUp
 {
     public static void main(String []args) {
         try {
-            InetAddress hostIPAddress = InetAddress.getByName(args[0]);
-            System.out.println(hostIPAddress.toString());
+            InetAddress hostIPAddress = InetAddress.getByName(args[0]); // using static method getByName() from class InetAddress to obtain the IP coming from arguments
+            System.out.println(hostIPAddress.toString()); // using toString method from class InetAddress to get a String with the type "<host name>/<IP Address>"
     
         }catch (UnknownHostException e) {
             System.out.println("UnknownHostException occurred");
