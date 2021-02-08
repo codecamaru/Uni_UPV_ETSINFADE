@@ -9,7 +9,7 @@ public class ClienteHTTP
         try{
             Socket s = new Socket("www.upv.es",80);
             System.out.println("¡Conectado!");
-            PrintWriter salida = new PrintWriter(s.getOutputStream(),true);
+            PrintWriter salida = new PrintWriter(s.getOutputStream());
             salida.println("GET / HTTP/1.0\r\n\r\n");
             salida.flush();
             Scanner lee = new Scanner(s.getInputStream());
