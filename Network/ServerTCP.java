@@ -3,10 +3,7 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 /**
- * Write a description of class ServerTCP here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * This is a sequential TCP echo Server. You can connect a Client to 7777 port with this server and everything you tell the server, it will echo you back!
  */
 public class ServerTCP
 {
