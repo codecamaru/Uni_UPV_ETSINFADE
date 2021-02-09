@@ -3,10 +3,9 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 /**
- * Write a description of class ServerListening here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * This is a sequential TCP Server class. Server sends a normal server answer from HTTP protocol and prints the browser's 
+ * answer when connecting a browser to this server at port 8000. Server knows when to stop printing because of the final line separator that protocol 
+ * HTTP dictates as the end of browser answer. 
  */
 public class ServerListening
 {
