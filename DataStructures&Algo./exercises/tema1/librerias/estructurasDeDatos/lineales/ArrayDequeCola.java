@@ -4,20 +4,20 @@ import java.util.ArrayDeque;
 
 public class ArrayDequeCola<E> extends ArrayDeque<E> implements Cola<E>{
 
-    public ArrayDequeCola(){
-        super.arrayDeque(30000);
+    public ArrayDequeCola(int numElements){
+        super(numElements);
     }
     public void encolar(E e){
         super.addLast(e);
     }
     public E desencolar(){
-        super.poll();
+        return super.poll();
     }
     public E primero(){
-        super.getFirst();
+        retrun super.getFirst();
     }
     public boolean esVacia(){
-        super.isEmpty();
+        return super.isEmpty();
     }
     public String toString(){
         StringBuilder res = new StringBuilder();
