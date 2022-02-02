@@ -2,7 +2,7 @@
 /**
  * Write a description of class Terrain3 here.
  * 
- * @author (your name) 
+ * @author CM
  * @version (a version number or a date)
  */
 public class Terrain3 implements Terrain
