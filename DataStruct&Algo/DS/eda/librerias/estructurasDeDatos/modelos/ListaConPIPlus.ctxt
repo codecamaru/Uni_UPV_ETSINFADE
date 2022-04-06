@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=e
+comment0.target=boolean\ contiene(java.lang.Object)
+comment0.text=comprueba\ si\ el\ Elemento\ e\ esta\ en\ una\ Lista\ Con\ PI\ *
+comment1.params=e
+comment1.target=boolean\ eliminar(java.lang.Object)
+comment1.text=\ elimina\ la\ primera\ aparicion\ del\ Elemento\ e\ en\ una\ Lista\ Con\ PI\ \r\n\ \ y\ devuelve\ true,\ o\ devuelve\ false\ si\ e\ no\ esta\ en\ la\ Lista\r\n
+comment2.params=e
+comment2.target=java.lang.Object\ eliminarUltimo(java.lang.Object)
+comment2.text=\ si\ el\ Elemento\ e\ esta\ en\ una\ Lista\ Con\ PI\ elimina\ su\ ultima\ \r\n\ \ aparicion\ y\ la\ devuelve\ como\ resultado;\ sino\ lo\ advierte\ \r\n\ \ lanzando\ la\ Excepcion\ ElementoNoEncontrado\ \r\n
+comment3.params=e
+comment3.target=void\ eliminarTodos(java.lang.Object)
+comment3.text=\ si\ el\ Elemento\ e\ esta\ en\ una\ Lista\ Con\ PI\ elimina\ todas\ sus\ \ \r\n\ \ apariciones\ en\ ella;\ sino\ lo\ advierte\ lanzando\ la\ Excepcion\ \r\n\ \ ElementoNoEncontrado\ \r\n
+comment4.params=
+comment4.target=void\ vaciar()
+comment4.text=elimina\ todos\ los\ Elementos\ de\ una\ Lista\ Con\ PI\ *
+comment5.params=otra
+comment5.target=void\ concatenar(ListaConPI)
+comment5.text=concatena\ una\ Lista\ Con\ PI\ con\ otra\ *
+comment6.params=
+comment6.target=void\ invertirDesdePI()
+comment6.text=invierte\ in-situ\ una\ Lista\ a\ partir\ de\ su\ PI\ *
+numComments=7
