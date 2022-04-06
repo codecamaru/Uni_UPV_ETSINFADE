@@ -1,0 +1,270 @@
+<html><head><title>mips-especulacion:  ejemplo.s. Ciclo 27</title></head>
+<body bgcolor="white">
+<a href="index.html">INICIO</a>&nbsp;
+<a href="final.html">FINAL</a>&nbsp;
+<a href="estado001.html">Estado</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="crono001.html">Cronograma</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="predictor001.html">BTB</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<tt><b>Programa:  ejemplo.s</b></tt>
+<br>
+<br>
+<table>
+<tr bgcolor="#ccddff">
+  <td>Ciclos</td>
+  <td>Instrucciones</td>
+  <td>CPI / IPC</td>
+  <td>Op. CF</td>
+  <td>Op. CF/ciclo</td>
+  <td>Saltos buscados</td>
+  <td>Saltos en BTB</td>
+  <td>Saltos ejecutados (C)</td>
+  <td>Saltos acertados</td>
+</tr>
+<tr bgcolor="#eeeeee">
+  <td>27</td>
+  <td>8</td>
+  <td>3.38 / 0.30</td>
+  <td>2</td>
+  <td>0.07</td>
+  <td>0 </td>
+  <td>0 (-nan%)</td>
+  <td>0 (0.0%)</td>
+  <td>0 (-nan%)</td>
+</tr>
+</table><br>
+<table>
+<tr bgcolor="#ccddff">
+  <td colspan="11" align="center">Ocupacion de recursos </td>
+</tr>
+<tr bgcolor="#ccddff">
+  <td>RS Ent.</td>
+  <td>RS S/R</td>
+  <td>RS M/D</td>
+  <td>RS Carga</td>
+  <td>RS Almac.</td>
+  <td>Op Ent.</td>
+  <td>Op S/R</td>
+  <td>Op M/D</td>
+  <td>Op AC</td>
+  <td>Op Mem.</td>
+  <td>RB</td>
+</tr>
+<tr bgcolor="#eeeeee">
+  <td>0 (0%)</td>
+  <td>1 (33%)</td>
+  <td>1 (50%)</td>
+  <td>3 (100%)</td>
+  <td>2 (66%)</td>
+  <td>0 (0%)</td>
+  <td>1 (100%)</td>
+  <td>1 (100%)</td>
+  <td>1 (100%)</td>
+  <td>1 (100%)</td>
+  <td>6 (30%)</td>
+</tr>
+</table><br>
+<table>
+ <tr valign="top"><td>
+<table>
+ <tr bgcolor="#ccddff">
+  <td>Estructura</td>
+  <td align="center">N&uacute;mero</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Num v&iacuteas Issue</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Num v&iacuteas Writeback</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Num v&iacuteas Commit</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Registros</td>
+  <td bgcolor="#eeeeee" align="center">32</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Reorder&nbsp;Buffer</td>
+  <td bgcolor="#eeeeee" align="center">20</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">E.R.&nbsp;Suma/Resta</td>
+  <td bgcolor="#eeeeee" align="center">3</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">E.R.&nbsp;Multiplicaci&oacute;n/Divisi&oacute;n</td>
+  <td bgcolor="#eeeeee" align="center">2</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">E.R.&nbsp;Enteros</td>
+  <td bgcolor="#eeeeee" align="center">5</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Buffers de carga</td>
+  <td bgcolor="#eeeeee" align="center">3</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Buffers de almacen.</td>
+  <td bgcolor="#eeeeee" align="center">3</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Tipo&nbsp;de&nbsp;predictor</td>
+  <td bgcolor="#eeeeee" align="center">BTB 1 bit</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Buffer&nbsp;predictor</td>
+  <td bgcolor="#eeeeee" align="center">2</td>
+ </tr>
+</table><br>
+  </td><td>
+<table>
+ <tr bgcolor="#ccddff">
+  <td>Operador</td>
+  <td align="center">Cantidad</td>
+  <td align="center">Latencia</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Suma/Resta</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+  <td bgcolor="#eeeeee" align="center">4</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Multiplicaci&oacute;n/Divisi&oacute;n</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+  <td bgcolor="#eeeeee" align="center">7</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Enteros</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ddeeff">Memoria de datos</td>
+  <td bgcolor="#eeeeee" align="center">1</td>
+  <td bgcolor="#eeeeee" align="center">2</td>
+ </tr>
+</table><br>
+  </td></tr>
+</table><br>
+<table>
+ <tr  valign="top" bgcolor="#ddeeff">
+  <td>Memoria&nbsp;de&nbsp;datos</td>
+  <td>Memoria&nbsp;de&nbsp;instrucciones</td>
+ </tr>
+ <tr valign="top"><td>
+<table>
+ <tr bgcolor="#ccddff">
+  <td width="50" align="center">Dir</td>
+  <td width="20" align="center">+0</td>
+  <td width="20" align="center">+1</td>
+  <td width="20" align="center">+2</td>
+  <td width="20" align="center">+3</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: brown; margin: 0 0.5em'>a</span></td>
+  <td align="center" rowspan="2" colspan="4">10.50</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: brown; margin: 0 0.5em'>8196</span></td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: seagreen; margin: 0 0.5em'>b</span></td>
+  <td align="center" rowspan="2" colspan="4">2.00</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: seagreen; margin: 0 0.5em'>8204</span></td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: lightcoral; margin: 0 0.5em'>c</span></td>
+  <td align="center" rowspan="2" colspan="4">20.00</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: lightcoral; margin: 0 0.5em'>8212</span></td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: magenta; margin: 0 0.5em'>s1</span></td>
+  <td align="center" rowspan="2" colspan="4">12.50</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: magenta; margin: 0 0.5em'>8220</span></td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: steelblue; margin: 0 0.5em'>s2</span></td>
+  <td align="center" rowspan="2" colspan="4">250.00</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: steelblue; margin: 0 0.5em'>8228</span></td>
+ </tr>
+</table><br>
+<table>
+ <tr bgcolor="#ccddff">
+  <td width="50" align="center">Dir</td>
+  <td width="20" align="center">+0</td>
+  <td width="20" align="center">+1</td>
+  <td width="20" align="center">+2</td>
+  <td width="20" align="center">+3</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: mediumseagreen; margin: 0 0.5em'>_stack</span></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+ </tr>
+ <tr bgcolor="#eeeeee">
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff"><span style='color: mediumseagreen; margin: 0 0.5em'>65532</span></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+ </tr>
+</table><br>
+  </td><td>
+<table>
+ <tr bgcolor="#ccddff">
+  <td width="75">Direcci&oacute;n</td>
+  <td width="200">Instrucciones</td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">inicio&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="limegreen">l.d f0,a(r28)</font></code></td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">4100&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="limegreen">l.d f1,b(r28)</font></code></td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">4104&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="limegreen">l.d f2,c(r28)</font></code></td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">4108&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="limegreen">add.d f4,f0,f1</font></code></td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">4112&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="limegreen">mul.d f5,f2,f4</font></code></td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">4116&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="limegreen">s.d f4,s1(r28)</font></code></td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">4120&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="limegreen">s.d f5,s2(r28)</font></code></td>
+ </tr>
+ <tr>
+  <td align="left" nowrap='nowrap' bgcolor="#ddeeff">final&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td bgcolor="#eeeeee" nowrap='nowrap'><code><font color="orange">trap 0</font></code></td>
+ </tr>
+</table>
+  </td></tr>
+</table><br>
+<address>Arquitectura e Ingenier&iacute;a de Computadores</address>
+</body></html>
