@@ -1,0 +1,8 @@
+round((pnorm(2,mean=0,sd=1,lower.tail = TRUE)-pnorm(1,mean=0,sd=1,lower.tail = TRUE)),3)
+round((pnorm(6,mean=8,sd=2,lower.tail = TRUE)-pnorm(5,mean=8,sd=2,lower.tail = TRUE)),3)
+qnorm(0.15,mean=171,sd=30)
+qnorm(0.95,mean=0,sd=1)
+qnorm(0.95,mean=0,sd=1,lower.tail=F)
+qnorm(0.25,mean=100,sd=9,lower.tail=F)
+round((pnorm(2,mean=0,sd=1,lower.tail = TRUE)-pnorm(-1,mean=0,sd=1,lower.tail = TRUE)),3)
+pnorm(20,mean=25.182165,sd=5,lower.tail=F)

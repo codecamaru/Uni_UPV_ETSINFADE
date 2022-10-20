@@ -1,0 +1,260 @@
+---
+title: "Práctica 2: Experimentos, probabilididades y análisis descriptivo"
+output: html_notebook
+---
+
+# Ejercicio 4. 
+
+En la revista Acta Anaesthesiologica Scandinavica, Volume 53, Issue 6, pages 699—841, (2009), se publicó un artículo de investigación con el siguiente resumen:
+
+**Introduction:** Patients who await surgery often suffer from fear and anxiety, which can be prevented by anxiolytic drugs. 
+
+Relaxing music may be an alternative treatment with fewer
+adverse effects. This randomised clinical trial compared pre-operative midazolam with relaxing music.
+
+**Method:** Three hundred and seventy-two patients scheduled for elective surgery were randomised to receive pre-operative prevention of anxiety by 0.05–0.1 mg/kg of midazolam orally or
+by relaxing music. The main outcome measure was the State Trait Anxiety Inventory (STAIX-1), which was completed by the patients just before and after the intervention.
+
+**Results:** Of the 177 patients who completed the music protocol, the mean and (standard deviation) STAI-state anxiety scores were 34 (8) before and 30 (7) after the intervention.
+
+The corresponding scores for the 150 patients in the midazolam group were 36 (8) before and 34 (7) after the intervention. The decline in the STAI-state anxiety score was significantly
+greater in the music group compared with the midazolam group (P < 0,001, 95 % confidence interval range −3,8 to −1,8). 
+
+**Conclusion:** Relaxing music decreases the level of anxiety in a pre-operative setting to a greater extent than orally administrated midazolam. Higher effectiveness and absence of apparent adverse effects makes pre-operative relaxing music a useful alternative to midazolam for pre-medication.
+
+- Este estudio, ¿es observacional o un experimento? Justifica tu respuesta.
+
+Es un experimento completamente aleatorizado, porque se impone un tratamiento a los individuos (pacientes que esperan a ser operados).
+
+- ¿Cuántos factores se han estudiado? ¿Cuántos tratamientos?
+
+Hay un sólo factor: tipo de ayuda que reciben para bajar el nivel de ansiedad.
+
+Dos tratamientos: (1) tomar midazolam, (2) escuchar música relajante.
+
+
+- Identifica la variable respuesta. ¿Es una variable categórica o cuantitativa?
+
+Variable respuesta: Puntuación obtenida en el test STAI que mide el nivel de ansiedad de cada paciente. La variable es numérica (cuantitativa).
+
+- Realiza el esquema del diseño que se ha utilizado. El esquema debe mostrar los diferentes tratamientos, el número de sujetos en cada tratamiento y el modo en que éstos fueron asignados
+a los mismos.
+
+Hay 372 pacientes y 2 tratamientos: hay que asignar totalmente al azar estos pacientes a los 2 grupos.
+
+(1) Tomar midazolam | (2) Escuchar música
+:----------------:|:----------------:
+186 pacientes   | 186 pacientes
+
+
+- Si a los pacientes se les asigna un número entre 1 y 372, ¿qué comando de R utilizarías para asignar totalmente al azar estos pacientes a los tratamientos de forma que el diseño sea equilibrado?
+
+```{r}
+tratamientos=rep(1:2, each=186)
+sample(tratamientos)
+```
+
+
+- ¿Cuántos pacientes no completaron el protocolo de este estudio? en el grupo que escuchó música relajante y en el grupo que tomó midazolam.
+
+En el grupo de música: 186 - 177 = 9 pacientes no completaron el protocolo.
+
+En el grupo que tomó midalozam: 186 - 150 : 36 pacientes no completaron el protocolo.
+
+¿Piensas que la música puede ayudar a relajarte? Prueba con esta canción especialmente compuesta para ello: Weightless del grupo Marconi Union.
+
+# Ejercicio 5. 
+
+Utiliza los comandos apropiados de R para obtener las siguientes probabilidades y percentiles
+
+(redondea todos los resultados a 3 cifras decimales):
+
+a) $P(N(8, 3) < 6) =$
+
+```{r}
+round(pnorm(6, mean=8, sd=3, lower.tail=TRUE), 3)
+```
+Comprueba que sabes obtener el valor con la tabla de la normal estándar (tipificando y buscando el valor).
+
+
+b) $P(N(8, 3) > 6) =$
+
+```{r}
+pnorm(6, mean=8, sd=3, lower.tail=FALSE)
+round(pnorm(6, mean=8, sd=3, lower.tail=FALSE), 3)
+```
+
+c) $P(−1 < N(0, 1) < 2) =$
+
+```{r}
+1-pnorm(-1, mean=0, sd=1, lower.tail=TRUE)-pnorm(2, mean=0, sd=1, lower.tail=FALSE)
+
+pnorm(-1, lower.tail=FALSE) - pnorm(2, lower.tail=FALSE)
+
+round(pnorm(2)-pnorm(-1),3)
+```
+
+d) $P(5 < N(8, 2) < 6) =$
+
+```{r}
+1-pnorm(5, mean=8, sd=2, lower.tail=TRUE)-pnorm(6, mean=8, sd=2, lower.tail=FALSE)
+```
+
+e) Valor $z/P(Z< z) = 0,95$ z =  
+
+```{r}
+qnorm(0.95, mean=0, sd=1, lower.tail=TRUE)
+```
+
+f) Valor $z/P(N(0, 1) > z) = 0,95$ z = 
+
+```{r}
+qnorm(0.95, mean=0, sd=1, lower.tail=FALSE)
+```
+g) Valor $x/P(N(100, 9) > x) = 0,25$ x = 
+
+```{r}
+qnorm(0.25, mean=100, sd=9, lower.tail=FALSE)
+```
+
+h) Si $X \sim N(\mu, \sigma = 5)$ y $P(X > 20) = 0,85$, el valor de la media será:
+
+$$
+P(X>20)=P(Z>\frac{20-\mu}{5}=z)=0,85
+$$
+Buscamos z con R:
+
+```{r}
+qnorm(0.85, mean=0, sd=1, lower.tail=FALSE)
+```
+$$\frac{20-\mu}{5}=-1.0364$$
+$$ \mu = 20 + 5*1.0364 = 25.182$$
+
+(Nota: este valor no puede obtenerse directamente con ningún comando de R. Realiza los cálculos que consideres para obtener el resultado.)
+
+Comprobamos que se cumple la ecuación:
+
+$P(X>20)=0,85$
+
+```{r}
+pnorm(20, mean=25.182, sd=5, lower.tail=FALSE)
+```
+
+# Ejercicio 1. 
+
+Tener un nivel de colesterol excesivamente alto eleva el riesgo de desarrollar enfermedades cardiovasculares. Por ello, es importante controlar los niveles de colesterol en los distintos
+grupos de edad y sexo.
+
+En general, se aconseja tener un nivel de colesterol total en sangre por debajo de 220 mg/dl.
+
+Con el objetivo de comparar el nivel de colesterol de hombres y mujeres en un mismo rango de edad, se midió el colesterol total en sangre (mg/dl) a una muestras de varones y a una muestra
+de mujeres de entre 20 y 29 años. Los datos se encuentran en los ficheros colhombres.csv y colmujeres.csv.
+
+Utilizando estos datos, realizar un análisis descriptivo que permita comparar el nivel de colesterol en la muestra de hombres y en la de mujeres. Redactar una breve síntesis con las
+conclusiones de este análisis aportando los datos que consideréis relevantes.
+
+- Importar los datos:
+
+```{r}
+h <- read.csv2("~/Dropbox/docencia/csv/colhombres.csv", sep="")
+m <- read.csv2("~/Dropbox/docencia/csv/colmujeres.csv", sep="")
+```
+
+- Análisis descriptivo del Colesterol total en la muestra de hombres
+
+```{r}
+hist(h$colh,
+     breaks=20, col="yellow",
+     main="Muestra de 96 hombres",
+     xlab="Colesterol total en sangre (mg/dl)",
+     ylab="Número de hombres")
+
+boxplot(h$colh, horizontal = TRUE,
+        main="Muestra de 96 hombres",
+        xlab="Colesterol total en sangre (mg/dl)")
+
+qqnorm(h$colh)
+```
+
+En vista de los gráficos, concluimos que el modelo de la distribución Normal sería más o menos adecuado para estos datos.
+
+
+
+```{r}
+summary(h$colh)
+sd(h$colh)
+```
+
+- Análisis descriptivo del Colesterol total en la muestra de mujeres
+
+```{r}
+hist(m$colm,
+     breaks=20, col="red",
+     main="Muestra de 85 mujeres",
+     xlab="Colesterol total en sangre (mg/dl)",
+     ylab="Número de mujeres")
+
+boxplot(m$colm, horizontal = TRUE,
+        main="Muestra de 85 mujeres",
+        xlab="Colesterol total en sangre (mg/dl)")
+
+qqnorm(m$colm)
+```
+
+En el caso de las mujeres, el modelo de la distribución Normal se va a aproximar mejor a los datos.
+
+
+```{r}
+summary(m$colm)
+sd(m$colm)
+```
+
+- Diagrama de caja múltiple para comparar los dos grupos:
+
+```{r}
+boxplot(h$colh, m$colm, 
+        main="Comparación de los 2 grupos",
+        ylab="Colesterol total (mg/dl)",
+        names=c("Hombres", "Mujeres"))
+```
+En promedio las mujeres presentan un nivel de colesterol total en sangre más elevado que los hombres (en promedio 10 mg/dl más que los hombres).
+
+Ambas distribuciones son bastante simétricas y presentan aproximadamente la misma dispersión.
+
+# Ejercicio 2. 
+
+El estudio se realizó instalando una carpa en el centro de la ciudad de Valencia durante un fin de semana del mes de julio. 
+
+Un equipo médico realizó extracciones de sangre a aquellos
+individuos, con edades comprendidas entre 20 y 29 años que, de manera voluntaria, accedieron a la carpa ante el reclamo de un panel que indicaba: **¿Sabe como afecta el colesterol a su corazón?**
+
+Con estas premisas:
+
+a) Identificar las poblaciones implicadas en el estudio:
+
+- Población 1: Todos los hombres de Valencia entre 20 y 29 años
+- Población 2: Todas las mujeres de Valencia entre 20 y 29 años
+
+b) Muestras utilizadas:
+
+- Muestra 1: 96 hombres que accedieron a la carpa
+- Muestra 2: 85 mujeres que accedieron a la carpa
+
+c) Variables aleatorias:
+
+- X = Nivel de colesterol total en sangre de cada persona (mg/dl)
+
+d) Parámetro más relevante de la población sobre el que se desea información y estadístico muestral utilizado para estimarlo:
+
+- Parámetros: $\mu_1=$ nivel medio de colesterol en la población de hombres, y $\mu_2=$ nivel medio de colesterol en la población de mujeres.
+
+- Estadísticos: $\overline{x}_1$ para estimar $\mu_1$ y $\overline{x}_2$ para estimar $\mu_2$ 
+
+e) El método de muestreo utilizado para seleccionar la muestra de individuos ¿es adecuado?
+
+NO, ya que el muestreo utilizado no es probabilístico. Se han utilizado muestras de voluntarios (aquellos que de manera voluntaria deciden acceder a la carpa).
+
+No debería utilizar estas muestras para hacer un estudio de inferencia y extraer conclusiones sobre las poblaciones de interés.
+
+
+

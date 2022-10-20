@@ -1,0 +1,291 @@
+---
+title: "Práctica 1 Análisis descriptivo"
+output:
+  html_document:
+    df_print: paged
+---
+# Ejercicio 1: Calculadora
+
+$$\sqrt{(1+2^2+3^3+4^4+5^5)}$$
+```{r}
+round(sqrt(sum((1:5)^(1:5))), 2)
+```
+
+$$\sqrt{5^9+\sqrt{12^{11}}}$$
+```{r}
+round(sqrt(5^9+sqrt(12^11)), 2)
+```
+
+$$\log_2{(2^1+2^2+2^3+...+2^{100})}$$
+```{r}
+round(log2(sum(2^(1:100))), 2)
+```
+$$ln{(e^{1/3})}+\log_5{(15625)}$$
+```{r}
+round(log(exp(1/3))+log(15625, base=5), 2)
+```
+
+$$e^1+e^{1/3}+e^{1/5}+e^{1/7}+...+e^{1/299}$$
+```{r}
+round(sum(exp(1/seq(1, 299, 2))), 2)
+```
+
+
+# Ejercicio 2 Ventas de DVDs
+
+Según la revista The Digital Bits, las cifras de ventas mensuales (en miles de dólares) de reproductores de DVD en 2003 fueron:
+
+ENE FEB MAR ABR MAY JUN JUL AGO SEP OCT NOV DIC
+
+790 740 1610 1270 1330 2100 990 1430 2490 2490 3680 3020
+
+- Crea un vector llamado ventas.dvd con estos datos y calcula:
+
+```{r}
+ventas.dvd = c(790, 740, 1610, 1270, 1330, 2100, 990, 1430, 2490, 2490, 3680, 3020)
+names(ventas.dvd) <- gsub("\\.", "", toupper(format(ISOdate(2000, 1:12, 1), "%b")))
+ventas.dvd
+```
+
+- Obtén un diagrama de caja de estas cifras.
+
+```{r}
+boxplot(ventas.dvd, horizontal = TRUE,
+        main="Ventas mensuales de DVDs en 2003",
+        xlab="Ventas de DVD (en miles de dólares)")
+```
+
+
+- ¿La distribución es simétrica? 
+
+No. Presenta una asimetría positiva.
+
+- ¿Existen valores aislados? 
+
+No
+
+-  La media y la mediana de la cifra de ventas.
+
+```{r}
+round(mean(ventas.dvd), 2)
+median(ventas.dvd)
+round(summary(ventas.dvd), 2)
+```
+
+La cifra media mensual de ventas fue de 1828 miles de dólares.
+
+Un 50% de los meses, la cifra mensual de ventas fue inferior a 1520 miles de dólares.
+
+
+- La desviación típica de la cifra de ventas: (miles de dólares)
+
+```{r}
+round(sd(ventas.dvd), 2)
+```
+
+La desviación típica de esta muestra es 930.8 miles de dólares.
+
+# Ejercicio 3 Maratón de NY 2002.
+
+El archivo nym2002.csv contiene datos de una muestra de corredores que completó la maratón de Nueva York (42 km) año 2002. 
+
+Consideraremos que esta muestra representa a la población de corredores que finalizaron esta maratón.
+
+Utiliza las opciones de menú del programa RStudio para hacer que estos datos sean accesibles en R.
+
+Importar los datos.
+
+```{r}
+ny <- read.csv2("C:/Users/aghil/Downloads/nym.2002.csv")
+#View(ny)
+#install.packages("clickR")
+library(clickR)
+descriptive(ny, z = 2)
+```
+
+Realizar los análisis que corresponda para responder las siguientes preguntas. Para visualizar los datos, puedes utilizar el comando: View(ny)
+
+
+- ¿Qué nombre reciben las variables de este conjunto de datos?
+
+```{r}
+names(ny)
+```
+
+- ¿Cuántos hombres hay en la muestra? 
+
+```{r}
+sum(ny$gender == "Male")
+```
+
+- ¿Cuántas mujeres? 
+
+```{r}
+sum(ny$gender == "Female")
+```
+
+Para obtener una tabla de frecuencias:
+
+```{r}
+table(ny$gender)
+```
+
+
+- En la muestra, ¿cuántos corredores son del estado de NY?
+
+```{r}
+sum(ny$home == "NY")
+```
+
+
+
+- En la muestra, ¿cuántos corredores son españoles (ESP)?
+
+```{r}
+sum(ny$home == "ESP")
+```
+
+- ¿Cuántos corredores españoles son hombres?
+
+```{r}
+sum(ny$home == "ESP" & ny$gender == "Male")
+```
+
+- ¿Cuántos corredores españoles son mujeres?
+
+```{r}
+sum(ny$home == "ESP" & ny$gender == "Female")
+```
+
+- En la muestra, ¿cuántos hombres finalizaron la carrera en menos de 3 horas? 
+
+```{r}
+sum(ny$gender == "Male" & ny$time < 3*60)
+```
+
+
+
+- En la muestra, ¿cuántas mujeres finalizaron la carrera en menos 3 horas?
+
+```{r}
+sum(ny$gender == "Female" & ny$time < 3*60)
+```
+
+- ¿Cuánto tiempo (en minutos) necestió el español más rápido de la muestra para completar la carrera?
+
+```{r}
+round(min(ny$time[ny$home == "ESP"]), 2)
+```
+
+
+- ¿En qué posicion finalizó  el español más rápido de la muestra?
+
+```{r}
+min(ny$place[ny$home == "ESP"])
+```
+
+- En la muestra, ¿qué equipo de corredores masculino fue en promedio más rápido: el equipo español (ESP) o el francés (FRA)?
+
+Calculamos los tiempos medios de estos equipos para comparar:
+
+```{r}
+round(mean(ny$time[ny$home == "ESP" & ny$gender == "Male"]), 2)
+round(mean(ny$time[ny$home == "FRA" & ny$gender == "Male"]), 2)
+```
+
+Los españoles son en promedio 24 minutos más rápidos que los franceses, pero ten en cuenta que el grupo de franceses es más numeroso que el de españoles.
+
+- ¿Qué tipo de distribución presenta la variable tiempo que tardan los hombres en finalizar la carrera? ¿Podemos asumir que estos datos siguen una distribución normal?
+
+### Alternativa 1: Histograma
+
+```{r}
+hist(ny$time[ny$gender == "Male"],
+     breaks = 20, col = "yellow",
+     main = "Tiempo de los hombres",
+     xlab = "Tiempo en minutos",
+     ylab = "Número de corredores")
+```
+
+### Alternativa 2: Estimación de densidad
+
+```{r}
+plot(density(ny$time[ny$gender == "Male"]),
+     main = "Tiempo de los hombres",
+     xlab = "Tiempo en minutos",
+     ylab = "Número de corredores")
+```
+
+
+La distribución presenta asimetría por la derecha, por lo que la distribución Normal no sirve para estudiar estos datos.
+
+Un gráfico de cuantiles empíricos frente a cuantiles teóricos de una distribución Normal también permite responder a esta pregunta:
+
+```{r}
+qqnorm(ny$time[ny$gender == "Male"])
+qqline(ny$time[ny$gender == "Male"])
+```
+
+Si la distribución Normal fuese adecuada, los datos deberían formar una línea recta en la diagonal del gráfico. Como la muestra es grande, debo ser exigente con el gráfico, y en este caso, de forma clara puedo responder que **NO** la distribución Normal no es adecuada para este conjunto de datos.
+
+**Más análisis que permiten responder esta pregunta: consulta la guía de ayuda.**
+
+
+- ¿Qué relación existe entre el tiempo que se tarda en finalizar la carrera y el sexo de los corredores?
+
+(Relación entre una variable numérica y una categórica)
+
+### Alternativa 1: Diagrama de cajas
+
+```{r}
+boxplot(ny$time ~ ny$gender)
+```
+
+Las distribuciones son similares: ambas presentan valores aislados por la derecha. La dispersión es similar, pero la distribución del tiempo para las mujeres está desplazada más arriba que la de los hombres (las mujeres tardan, en general, más tiempo en finalizar la carrera).
+
+### Alternativa 2: ECDF (empirical cumulative distribution function)
+```{r}
+plot(ecdf(ny$time[ny$gender == "Male"]), col="darkblue", xlab="Minutos", main="ECDF Tiempo")
+lines(ecdf(ny$time[ny$gender == "Female"]), col="darkred")
+```
+
+Principales estadísticos por grupos:
+
+```{r}
+tapply(ny$time, ny$gender, function(x) round(summary(x), 2))
+```
+
+- ¿Qué relación existe entre el tiempo que se tarda en finalizar la carrera y la edad de los corredores?
+
+(Relación entre dos variables numéricas)
+
+```{r}
+plot(ny$age, ny$time, pch = 16)
+```
+
+(Debes arreglar el gráfico: añade un título, etiqueta correctamente los ejes y cambia, si quieres, el color de los puntos).
+
+Sorprendentemente solo se aprecia una relación positiva muy débil. La edad no parece ser un factor determinante para saber lo rápido que va a ser un corredor en esta maratón.
+
+*Los gráficos base son muy útiles para hacer exploraciones rápidas de los datos, pero para obtener resultados más vistosos puede ser una buena opción instalar el paquete ggplot2.
+
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+ggplot(ny, aes(x = age, y = time)) + geom_point() + ggtitle("Relación entre tiempo y edad") + xlab("Edad (años)") + ylab("Tiempo (minutos)")
+```
+
+- ¿Existe algún punto en el diagrama de dispersión que se aparte del resto de los puntos? ¿Qué característica sorprendente presenta este punto?
+
+Valor aislado a la izquierda y en la zona media del gráfico. ¿Un corredor de menos de 10 años?
+
+- Coef. de correlación lineal entre estas variables: 
+
+```{r}
+round(cor(ny$time, ny$age), 2)
+```
+
+Conclusión: Valor positivo, pero próximo a 0. Indica que la relación lineal es positiva pero muy débil, como habíamos visto en el diagrama de dispersión.
+
+
+

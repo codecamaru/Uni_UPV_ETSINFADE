@@ -1,0 +1,7 @@
+sqrt(1+(2^2)+(3^3)+(4^4)+(5^5))
+ventas.dvd = c(790,740,1610,1270,1330,2100,990,1430,2490,2490,3680,3020)
+boxplot(ventas.dvd)
+mean(ventas.dvd)
+median(ventas.dvd)
+sd(ventas.dvd)
+nym.2002 = read.csv(file = "nym.2002.csv", header=TRUE,sep=":",dec=",")
