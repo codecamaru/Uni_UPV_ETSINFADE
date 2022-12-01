@@ -1,0 +1,30 @@
+Código paralelo con planificación estática y chunk=0 (reparto por bloques) y 2 hilos
+	Tiempo para 2 hilos: 33.761677
+Código paralelo con planificación estática y chunk=1 (reparto cíclico de 1 en 1) y 2 hilos
+	Tiempo para 2 hilos: 31.098589
+Código paralelo con planificación dinámica y chunk=1 y 2 hilos
+	Tiempo para 2 hilos: 30.881627
+Código paralelo con planificación estática y chunk=0 (reparto por bloques) y 4 hilos
+	Tiempo para 4 hilos: 17.029899
+Código paralelo con planificación estática y chunk=1 (reparto cíclico de 1 en 1) y 4 hilos
+	Tiempo para 4 hilos: 15.872219
+Código paralelo con planificación dinámica y chunk=1 y 4 hilos
+	Tiempo para 4 hilos: 15.466585
+Código paralelo con planificación estática y chunk=0 (reparto por bloques) y 8 hilos
+	Tiempo para 8 hilos: 8.671352
+Código paralelo con planificación estática y chunk=1 (reparto cíclico de 1 en 1) y 8 hilos
+	Tiempo para 8 hilos: 8.236933
+Código paralelo con planificación dinámica y chunk=1 y 8 hilos
+	Tiempo para 8 hilos: 7.760039
+Código paralelo con planificación estática y chunk=0 (reparto por bloques) y 16 hilos
+	Tiempo para 16 hilos: 4.949004
+Código paralelo con planificación estática y chunk=1 (reparto cíclico de 1 en 1) y 16 hilos
+	Tiempo para 16 hilos: 4.997327
+Código paralelo con planificación dinámica y chunk=1 y 16 hilos
+	Tiempo para 16 hilos: 4.597174
+Código paralelo con planificación estática y chunk=0 (reparto por bloques) y 32 hilos
+	Tiempo para 32 hilos: 3.100222
+Código paralelo con planificación estática y chunk=1 (reparto cíclico de 1 en 1) y 32 hilos
+	Tiempo para 32 hilos: 2.916598
+Código paralelo con planificación dinámica y chunk=1 y 32 hilos
+	Tiempo para 32 hilos: 2.477674
