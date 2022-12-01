@@ -1,0 +1,794 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     23133,        786]
+NotebookOptionsPosition[     20534,        694]
+NotebookOutlinePosition[     21042,        718]
+CellTagsIndexPosition[     20974,        713]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "Introducci\[OAcute]n a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " "
+}], "Title",
+ PageWidth->PaperWidth,
+ TextAlignment->Center,
+ TextJustification->0.,
+ Background->RGBColor[0, 0, 1]],
+
+Cell[CellGroupData[{
+
+Cell["Introducci\[OAcute]n", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680434798777732*^9, 3.680434803118713*^9}},
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " es un programa que realiza c\[AAcute]lculos de manera tanto \
+num\[EAcute]rica como simb\[OAcute]lica. Esto significa que puede trabajar \
+con n\[UAcute]meros y con s\[IAcute]mbolos. Adem\[AAcute]s dispone de un \
+lenguaje de programaci\[OAcute]n de alto nivel. "
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680434814110976*^9, 3.680434897225268*^9}, {
+  3.680527008145013*^9, 3.6805270589038553`*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Para empezar", "Section",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[CellGroupData[{
+
+Cell["Escribir", "Subsubsection",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[TextData[{
+ StyleBox["1.",
+  FontWeight->"Bold"],
+ " Los ",
+ StyleBox["notebooks",
+  FontSlant->"Italic"],
+ " son los ficheros en los que trabaja ",
+ StyleBox["Mathematica.",
+  FontSlant->"Italic"],
+ " Estos ficheros tienen extensi\[OAcute]n ",
+ StyleBox[".nb ",
+  FontWeight->"Bold"],
+ "\n",
+ StyleBox["2.",
+  FontWeight->"Bold"],
+ " Los ",
+ StyleBox["notebooks",
+  FontSlant->"Italic"],
+ " se componen de celdas donde se agrupa la informaci\[OAcute]n. Las celdas \
+son diferentes dependiendo de su contenido, por ejemplo celdas de texto o \
+celdas ejecutables (entradas y resultados).\n",
+ StyleBox["3.",
+  FontWeight->"Bold"],
+ " Moviendo el rat\[OAcute]n, cuando el cursor se ponga horizontal, pincha \
+con el bot\[OAcute]n izquierdo y ya se puede escribir."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680434976762973*^9, 3.680434994167223*^9}, {
+  3.680435030910675*^9, 3.680435090444414*^9}, {3.6804351797592487`*^9, 
+  3.680435308908906*^9}, {3.680435364541072*^9, 3.680435369929296*^9}, {
+  3.68043540150812*^9, 3.680435447745537*^9}, {3.6804354802355757`*^9, 
+  3.68043549770667*^9}, {3.680493202603718*^9, 3.6804932300964613`*^9}, {
+  3.680528438253635*^9, 3.680528445746022*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Ejecutar una instrucci\[OAcute]n", "Subsubsection",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell["\<\
+Sit\[UAcute]ate con el rat\[OAcute]n en la instrucci\[OAcute]n que quieras \
+ejecutar. Pincha con el bot\[OAcute]n izquierdo y pulsa a la vez la combinaci\
+\[OAcute]n de teclas <Shift + Enter> o <May\[UAcute]sculas + Intro>.\
+\>", "Text",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "La ayuda del ",
+ StyleBox["Mathematica.",
+  FontSlant->"Italic"]
+}], "Subsubsection",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680503447157653*^9, 3.680503463412517*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[TextData[{
+ "La ayuda (men\[UAcute] ",
+ StyleBox["Help",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["Help Browser",
+  FontSlant->"Italic"],
+ ") contiene la sintaxis y ejemplos de todas las instrucciones de ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". Adem\[AAcute]s,  permite editar, cambiar los ejemplos y ejecutarlos \
+dentro de la misma ayuda."
+}], "Text",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "La paleta",
+ StyleBox[".",
+  FontSlant->"Italic"]
+}], "Subsubsection",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680503447157653*^9, 3.680503463412517*^9}, {
+  3.7128337159773684`*^9, 3.712833720228931*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " tiene unas paletas que permiten escribir s\[IAcute]mbolos \
+matem\[AAcute]ticos y acceder f\[AAcute]cilmente a los comandos implementados \
+en el programa."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.712833727215082*^9, 3.712833826801773*^9}, 
+   3.712833867450591*^9},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Corchetes, llaves y par\[EAcute]ntesis", "Subsubsection",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680493834279751*^9, 3.6804938566100693`*^9}, {
+   3.680529626800952*^9, 3.680529632436391*^9}, {3.680529905338943*^9, 
+   3.680529935026958*^9}, 3.680530049620592*^9, {3.7128336422322407`*^9, 
+   3.712833642805873*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[TextData[{
+ "Los corchetes ",
+ StyleBox["[ ]",
+  FontWeight->"Bold"],
+ ", delimitan los argumentos de todas las funciones y \[OAcute]rdenes en ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " y tambi\[EAcute]n aquellas que defina el usuario.\nLas llaves ",
+ StyleBox["{ }",
+  FontWeight->"Bold"],
+ ", se usan para la definici\[OAcute]n de listas de elementos. \
+Tambi\[EAcute]n se usan para incluir ciertas opciones dentro de algunas \
+\[OAcute]rdenes de ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ".\nLos par\[EAcute]ntesis ",
+ StyleBox["( )",
+  FontWeight->"Bold"],
+ ", se utilizan para indicar la prioridad de las operaciones de tipo aritm\
+\[EAcute]tico."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6804356434749527`*^9, 3.680435644463359*^9}, {
+   3.6804932547905197`*^9, 3.68049325824417*^9}, 3.680493340043025*^9, {
+   3.680493572850951*^9, 3.6804936444348993`*^9}, 3.680493860356255*^9, {
+   3.6805032667531757`*^9, 3.68050344001235*^9}, {3.680529947672626*^9, 
+   3.680530019491692*^9}, {3.6805300571698437`*^9, 3.68053006120814*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Advertencias", "Subsubsection",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680503482998376*^9, 3.680503483684641*^9}, {
+  3.6805304804940968`*^9, 3.6805304817080517`*^9}, {3.680530517776339*^9, 
+  3.6805305326253757`*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " distingue entre may\[UAcute]sculas y min\[UAcute]sculas.\n",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " guarda TODO durante una sesi\[OAcute]n.\n",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " interpreta un espacio en blanco como la operaci\[OAcute]n de multiplicar."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6804356434749527`*^9, 3.680435644463359*^9}, {
+   3.6804932547905197`*^9, 3.68049325824417*^9}, 3.680493340043025*^9, {
+   3.680493572850951*^9, 3.6804936444348993`*^9}, {3.7128338368524437`*^9, 
+   3.7128338745361843`*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["B\[AAcute]sico", "Section",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[CellGroupData[{
+
+Cell["Resultados exactos y aproximados. La funci\[OAcute]n N[ ]", \
+"Subsubsection",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680503714207358*^9, 3.6805037482052937`*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[TextData[{
+ StyleBox["Mathematica ",
+  FontSlant->"Italic"],
+ "proporciona el resultado exacto. Podemos pedirle que nos d\[EAcute] una \
+aproximaci\[OAcute]n num\[EAcute]rica poniendo al final del input o del \
+output ",
+ StyleBox["//N",
+  FontWeight->"Bold"],
+ " o usando la funci\[OAcute]n ",
+ StyleBox["N[ ]",
+  FontWeight->"Bold"]
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6805038209364777`*^9, 3.680503971358972*^9}, {
+  3.680504025009883*^9, 3.6805040273274097`*^9}, {3.680504657459944*^9, 
+  3.680504658461336*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["5", "7"], "+", 
+    RadicalBox["27", "3"]}], 
+   RowBox[{"9", "+", 
+    SuperscriptBox["2", "12"]}]], "-", 
+  FractionBox["1", 
+   RowBox[{"7", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"5", "+", 
+       SqrtBox["25"]}], ")"}], "3"]}]]}]], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680504056664854*^9, 3.680504211962638*^9}},
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["5", "7"], "+", 
+     RadicalBox["27", "3"]}], 
+    RowBox[{"9", "+", 
+     SuperscriptBox["2", "12"]}]], "-", 
+   FractionBox["1", 
+    RowBox[{"7", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"5", "+", 
+        SqrtBox["25"]}], ")"}], "3"]}]]}], "]"}]], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680504056664854*^9, 3.680504246833192*^9}},
+ TextAlignment->Left,
+ TextJustification->1.]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["La funci\[OAcute]n Clear[ ]", "Subsubsection",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680503714207358*^9, 3.68050372003522*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[TextData[{
+ "La funci\[OAcute]n ",
+ StyleBox["Clear[ ]",
+  FontWeight->"Bold"],
+ " borra los contenidos de las variables."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680504552542768*^9, 3.68050456408545*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontSize->14],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", "34"}], ";"}], "\[IndentingNewLine]", "a"}], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.712834920242464*^9, 3.712834921106915*^9}},
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "a", "]"}], ";"}], "\n", "a"}], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{3.680504590816084*^9},
+ TextAlignment->Left,
+ TextJustification->1.]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Listas. Operaciones con vectores y matrices", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.7128343594757547`*^9, 3.712834361657475*^9}},
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[TextData[{
+ "Una lista es una relaci\[OAcute]n de expresiones separadas por comas y \
+entre llaves. Por ejemplo: ",
+ StyleBox["lista={2,x,\[Pi],8+2 I}", "InlineInput"],
+ ". Las listas son muy importantes en ",
+ StyleBox["Mathematica. ",
+  FontSlant->"Italic"],
+ "Casi todas las funciones trabajan con listas. Adem\[AAcute]s, los vectores \
+son listas y las matrices, una lista de listas."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680504552542768*^9, 3.68050456408545*^9}, {
+   3.680504902720496*^9, 3.680504954639244*^9}, {3.680505056462709*^9, 
+   3.6805050822924433`*^9}, {3.680505906768571*^9, 3.680505942498253*^9}, {
+   3.680506045650313*^9, 3.680506072052863*^9}, {3.680506270975855*^9, 
+   3.680506473744348*^9}, 3.712835341673542*^9},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontWeight->"Regular"],
+
+Cell[BoxData[{
+ RowBox[{"vector", "=", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "x", ",", "\[Pi]", ",", 
+    RowBox[{"8", "+", 
+     RowBox[{"2", " ", "I"}]}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "vector", "]"}]}], "Input",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[BoxData[{
+ RowBox[{"matriz", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], ",", 
+    "\[IndentingNewLine]", "               ", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "matriz", "]"}]}], "Input",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[TextData[{
+ "Para multiplicar n\[UAcute]meros se usa el asterisco ",
+ StyleBox["*", "Input"],
+ " o el espacio y para multiplicar vectores y matrices se usa el punto ",
+ StyleBox[".", "Input"]
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680507583026429*^9, 3.680507604883841*^9}, 
+   3.712834372180634*^9},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontWeight->"Regular"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"vector", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "6", ",", 
+     RowBox[{"-", "1"}], ",", "3"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"matriz", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "5", ",", "6", ",", 
+       RowBox[{"-", "2"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     "             ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{"-", "3"}], ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+     "             ", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", 
+       RowBox[{"-", "3"}], ",", "0", ",", "0"}], "}"}], ",", 
+     "\[IndentingNewLine]", "             ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{"-", "1"}], ",", "9"}], "}"}]}], "}"}]}], ";"}]}], "Input",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[BoxData[{
+ RowBox[{"vector", ".", "vector"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"matriz", ".", "vector"}], "//", 
+  "MatrixForm"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"matriz", ".", "matriz"}], "//", "MatrixForm"}]}], "Input",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[TextData[{
+ StyleBox["MatrixForm[ ]",
+  FontWeight->"Bold"],
+ " es una instrucci\[OAcute]n de formato. Te permite ver la matriz en forma \
+de caja. Si multiplicamos 2 matrices a las que les hemos aplicado \
+MatrixForm[] antes, no obtendremos resultado."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680525309546157*^9, 3.680525310479171*^9}, {
+  3.680535236131027*^9, 3.6805352677756357`*^9}, {3.7128349650500183`*^9, 
+  3.712834999801705*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontWeight->"Regular"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"matriz", ".", "matriz"}], "//", 
+  "MatrixForm"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MatrixForm", "[", "matriz", "]"}], ".", 
+  RowBox[{"MatrixForm", "[", "matriz", "]"}]}]}], "Input",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[TextData[{
+ StyleBox["Det[ ]",
+  FontWeight->"Bold"],
+ " calcula el determinante de una matriz cuadrada. "
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680525309546157*^9, 3.680525310479171*^9}, {
+  3.680535236131027*^9, 3.6805352677756357`*^9}, {3.712834770648131*^9, 
+  3.712834793788289*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontWeight->"Regular"],
+
+Cell[BoxData[
+ RowBox[{"Det", "[", " ", "matriz", " ", "]"}]], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.7128348021596127`*^9, 3.712834811068852*^9}},
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[TextData[{
+ "Con la instrucci\[OAcute]n ",
+ StyleBox["Inverse[ ]",
+  FontWeight->"Bold"],
+ " se calcula la inversa de una matriz cuadrada invertible. Cuando la matriz \
+no es invertible (singular), ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " devuelve un error."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680525309546157*^9, 3.680525310479171*^9}, {
+  3.680535236131027*^9, 3.6805352677756357`*^9}, {3.712834770648131*^9, 
+  3.712834858398035*^9}, {3.71283515198287*^9, 3.712835165527605*^9}, {
+  3.712835906137877*^9, 3.712835908734898*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontWeight->"Regular"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Inverse", "[", " ", "matriz", " ", "]"}], "//", 
+  "MatrixForm"}], "\[IndentingNewLine]", 
+ RowBox[{"Inverse", "[", " ", 
+  RowBox[{"{", " ", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{"1", ",", "2", ",", "2"}], " ", "}"}], ",", " ", 
+    RowBox[{"{", " ", 
+     RowBox[{"0", ",", "0", ",", "1"}], " ", "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "1"}], " ", "}"}]}], " ", "}"}], " ", 
+  "]"}]}], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.7128348021596127`*^9, 3.712834811068852*^9}, 
+   3.7128348831506443`*^9, {3.712835096071611*^9, 3.71283514220623*^9}},
+ TextAlignment->Left,
+ TextJustification->1.]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Resoluci\[OAcute]n de ecuaciones: Solve[ ] y NSolve[ ]", "Section",
+ PageWidth->PaperWidth,
+ CellDingbat->None,
+ CellChangeTimes->{{3.680525094772246*^9, 3.6805250983270617`*^9}},
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[TextData[{
+ StyleBox["Solve[ ] ",
+  FontWeight->"Bold"],
+ "y ",
+ StyleBox["NSolve[ ]",
+  FontWeight->"Bold"],
+ " son funciones que permiten resolver ecuaciones y sistemas de ecuaciones. ",
+ StyleBox["Solve",
+  FontSlant->"Italic"],
+ " lo hace de forma exacta y ",
+ StyleBox["NSolve",
+  FontSlant->"Italic"],
+ " de forma num\[EAcute]rica. La sintaxis en ambos es:"
+}], "Text",
+ PageWidth->PaperWidth,
+ CellDingbat->None,
+ CellChangeTimes->{{3.6805065018019*^9, 3.680506539106742*^9}, {
+   3.68052635915656*^9, 3.680526369314412*^9}, {3.680526484896697*^9, 
+   3.680526486246797*^9}, 3.712835352912698*^9},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontWeight->"Regular"],
+
+Cell[TextData[StyleBox["Solve[eqns,vars]", "Input"]], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680504552542768*^9, 3.68050456408545*^9}, {
+   3.680504902720496*^9, 3.680504954639244*^9}, {3.680505056462709*^9, 
+   3.6805050822924433`*^9}, {3.680505906768571*^9, 3.680505996070774*^9}, 
+   3.680506026906808*^9, {3.680525329637857*^9, 3.680525342226222*^9}, {
+   3.6805263992848473`*^9, 3.680526412874107*^9}},
+ TextAlignment->Center,
+ TextJustification->0.],
+
+Cell[TextData[{
+ "resuelve la/s ecuaci\[OAcute]n/ones ",
+ StyleBox["eqns", "InlineInput"],
+ " para las variables ",
+ StyleBox["vars", "InlineInput"],
+ StyleBox[". N\[OAcute]tese que el signo de igual en la ecuaci\[OAcute]n debe \
+escribirse doble (==).",
+  FontWeight->"Plain"]
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.680504552542768*^9, 3.68050456408545*^9}, {
+  3.680504902720496*^9, 3.680504954639244*^9}, {3.680505056462709*^9, 
+  3.6805050822924433`*^9}, {3.680505906768571*^9, 3.680505942498253*^9}, {
+  3.680506045650313*^9, 3.680506072052863*^9}, {3.6805264314488087`*^9, 
+  3.680526455342978*^9}, {3.680533452940035*^9, 3.6805334874881287`*^9}, {
+  3.712835364351565*^9, 3.712835369908956*^9}},
+ TextAlignment->Left,
+ TextJustification->1.,
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontWeight->"Regular"],
+
+Cell[BoxData[{
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["x", "3"], "+", " ", "x", "+", "1"}], "==", "0"}], ",", 
+   "x"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NSolve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["x", "3"], "+", " ", "x", "+", "1"}], "==", "0"}], ",", 
+   "x"}], "]"}]}], "Input",
+ PageWidth->PaperWidth,
+ CellDingbat->None,
+ TextAlignment->Left,
+ TextJustification->1.],
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      FractionBox[
+       RowBox[{"1", "+", "x"}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "y"}]], "==", "0"}], ",", 
+     "\[IndentingNewLine]", "           ", 
+     RowBox[{
+      RowBox[{"2", "-", 
+       RowBox[{"3", "y"}], "+", 
+       SuperscriptBox["y", "2"]}], "==", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ PageWidth->PaperWidth,
+ TextAlignment->Left,
+ TextJustification->1.,
+ CellTags->"Solve"]
+}, Open  ]]
+},
+WindowToolbars->"EditBar",
+WindowSize->{817, 1252},
+WindowMargins->{{52, Automatic}, {Automatic, 0}},
+Magnification->1.5,
+FrontEndVersion->"11.0 para Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Classroom.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Solve"->{
+  Cell[19957, 671, 561, 20, 138, "Input",
+   CellTags->"Solve"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Solve", 20885, 707}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 214, 9, 76, "Title"],
+Cell[CellGroupData[{
+Cell[796, 33, 175, 4, 77, "Section"],
+Cell[974, 39, 545, 13, 90, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1556, 57, 101, 3, 77, "Section"],
+Cell[CellGroupData[{
+Cell[1682, 64, 118, 4, 52, "Subsubsection"],
+Cell[1803, 70, 1271, 35, 220, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3111, 110, 142, 4, 52, "Subsubsection"],
+Cell[3256, 116, 333, 8, 90, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3626, 129, 254, 9, 52, "Subsubsection"],
+Cell[3883, 140, 458, 16, 90, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4378, 161, 290, 10, 52, "Subsubsection"],
+Cell[4671, 173, 413, 12, 64, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5121, 190, 390, 8, 52, "Subsubsection"],
+Cell[5514, 200, 1140, 29, 194, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6691, 234, 292, 7, 52, "Subsubsection"],
+Cell[6986, 243, 695, 18, 114, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7730, 267, 103, 3, 77, "Section"],
+Cell[CellGroupData[{
+Cell[7858, 274, 237, 6, 52, "Subsubsection"],
+Cell[8098, 282, 604, 18, 90, "Text"],
+Cell[8705, 302, 467, 17, 123, "Input"],
+Cell[9175, 321, 507, 18, 123, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9719, 344, 202, 5, 52, "Subsubsection"],
+Cell[9924, 351, 289, 10, 37, "Text"],
+Cell[10216, 363, 234, 6, 102, "Input"],
+Cell[10453, 371, 201, 6, 102, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10703, 383, 200, 4, 77, "Section"],
+Cell[10906, 389, 881, 20, 128, "Text"],
+Cell[11790, 411, 317, 9, 122, "Input"],
+Cell[12110, 422, 435, 13, 151, "Input"],
+Cell[12548, 437, 441, 13, 74, "Text"],
+Cell[12992, 452, 967, 30, 209, "Input"],
+Cell[13962, 484, 320, 9, 151, "Input"],
+Cell[14285, 495, 579, 15, 96, "Text"],
+Cell[14867, 512, 301, 9, 122, "Input"],
+Cell[15171, 523, 430, 13, 39, "Text"],
+Cell[15604, 538, 209, 5, 92, "Input"],
+Cell[15816, 545, 690, 19, 96, "Text"],
+Cell[16509, 566, 683, 18, 122, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17229, 589, 231, 5, 77, "Section"],
+Cell[17463, 596, 726, 23, 96, "Text"],
+Cell[18192, 621, 470, 8, 38, "Text"],
+Cell[18665, 631, 838, 20, 71, "Text"],
+Cell[19506, 653, 448, 16, 108, "Input"],
+Cell[19957, 671, 561, 20, 138, "Input",
+ CellTags->"Solve"]
+}, Open  ]]
+}
+]
+*)
+

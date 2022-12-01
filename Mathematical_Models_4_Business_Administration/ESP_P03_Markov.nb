@@ -1,0 +1,464 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     33460,        754]
+NotebookOptionsPosition[     29222,        697]
+NotebookOutlinePosition[     29635,        715]
+CellTagsIndexPosition[     29592,        712]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Modelos de cadenas de Markov", "Title",
+ CellChangeTimes->{{3.6804898296663513`*^9, 3.680489833251339*^9}, {
+  3.681363052817821*^9, 3.681363061513854*^9}, {3.681370927185479*^9, 
+  3.681370935337632*^9}},
+ TextAlignment->Center,
+ TextJustification->0,
+ Background->RGBColor[
+  0, 0, 1],ExpressionUUID->"1bf97c91-6039-40d8-8688-278e90a982d9"],
+
+Cell["Lealtad a las marcas de zapatillas deportivas", "Section",
+ CellChangeTimes->{{3.680434798777732*^9, 3.680434803118713*^9}, {
+   3.680489835850788*^9, 3.680489845131275*^9}, 3.681363161673275*^9, {
+   3.681370943271215*^9, 
+   3.681370972413103*^9}},ExpressionUUID->"f7208953-0ed3-4bba-a4ad-\
+dc7ce476ccea"],
+
+Cell["\<\
+El prop\[OAcute]sito de este ejerccio es examinar la lealtad de los \
+consumidores a las marcas de zapatillas deportivas usando cadenas de Markov. \
+Pare este estudio, se han recopilado unos datos de lealtad a las marcas. Los \
+resultados de este ejercicio pueden conducir a realizar cambios para mejorar \
+la cuota de mercado.\
+\>", "Text",
+ CellChangeTimes->{{3.680434814110976*^9, 3.680434897225268*^9}, {
+   3.6804898503295727`*^9, 3.6804898550872602`*^9}, 3.681363045226103*^9, {
+   3.681363181858327*^9, 3.681363216762588*^9}, {3.6813710009253283`*^9, 
+   3.68137105659717*^9}, {3.681371275439149*^9, 3.681371354095065*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"695fff39-b310-486b-8296-634dce65aa6f"],
+
+Cell["\<\
+La siguiente tabla detemina la evoluci\[OAcute]n del cambio de marcas de los \
+usuarios de zapatillas deportivas entre las marcas Adidas, Nike, Reebok, \
+Puma, Slazenger, Kappa, Diadora, Ellese, Le coq sportif, Asix, Converse, \
+otras, en un per\[IAcute]odo dado.\
+\>", "Text",
+ CellChangeTimes->{{3.680434814110976*^9, 3.680434897225268*^9}, {
+   3.6804898503295727`*^9, 3.6804898550872602`*^9}, 3.681363045226103*^9, {
+   3.681363181858327*^9, 3.68136324529368*^9}, {3.681371358703237*^9, 
+   3.681371450806128*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"bf3b2b8c-9b94-491c-a88d-dc8dd286abb6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"etiq", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Adidas\>\"", ",", "\"\<Nike\>\"", ",", "\"\<Reebok\>\"", ",", 
+     "\"\<Puma\>\"", ",", "\"\<Slazenger\>\"", ",", "\"\<Kappa\>\"", ",", 
+     "\"\<Diadora\>\"", ",", "\"\<Ellese\>\"", ",", "\"\<Le coq sportif\>\"", 
+     ",", "\"\<Asix\>\"", ",", "\"\<Converse\>\"", ",", "\"\<Other\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"M", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "0.042", ",", "0.472", ",", "0.36", ",", "0.438", ",", "0.395", ",", 
+       "0", ",", "0.111", ",", "0", ",", "0", ",", "0.167", ",", "0.4", ",", 
+       "0.309"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.563", ",", "0.016", ",", "0.488", ",", "0.25", ",", "0.289", ",", 
+       "0.5", ",", "0.333", ",", "0.6", ",", "0.571", ",", "0", ",", "0.2", 
+       ",", "0.4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.204", ",", "0.276", ",", "0.012", ",", "0", ",", "0.184", ",", 
+       "0.25", ",", "0", ",", "0", ",", "0.286", ",", "0.167", ",", "0", ",", 
+       "0.055"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.024", ",", "0.057", ",", "0.023", ",", "0", ",", "0", ",", "0", ",", 
+       "0", ",", "0", ",", "0.143", ",", "0.167", ",", "0", ",", "0"}], "}"}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.06", ",", "0.041", ",", "0.047", ",", "0.123", ",", "0.053", ",", 
+       "0", ",", "0.111", ",", "0.2", ",", "0", ",", "0.167", ",", "0.2", ",",
+        "0.036"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.006", ",", "0.008", ",", "0", ",", "0", ",", "0", ",", "0.25", ",", 
+       "0.111", ",", "0.2", ",", "0", ",", "0.166", ",", "0", ",", "0"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.012", ",", "0.033", ",", "0.012", ",", "0", ",", "0.026", ",", "0", 
+       ",", "0.111", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0.036"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.006", ",", "0.008", ",", "0", ",", "0", ",", "0.053", ",", "0", ",", 
+       "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0.018"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.012", ",", "0", ",", "0.012", ",", "0.063", ",", "0", ",", "0", ",", 
+       "0", ",", "0", ",", "0", ",", "0.166", ",", "0", ",", "0"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.006", ",", "0.008", ",", "0.012", ",", "0.063", ",", "0", ",", "0", 
+       ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.018", ",", "0.008", ",", "0", ",", "0.063", ",", "0", ",", "0", ",", 
+       "0.111", ",", "0", ",", "0", ",", "0", ",", "0.2", ",", "0.018"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.047", ",", "0.073", ",", "0.034", ",", "0", ",", "0", ",", "0", ",", 
+       "0.112", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0.128"}], 
+      "}"}]}], "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", " ", 
+  RowBox[{"M", ",", 
+   RowBox[{"TableAlignments", "\[Rule]", "Center"}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"etiq", ",", " ", "etiq"}], " ", "}"}]}]}], " ", "]"}]}], "Input",
+ CellChangeTimes->{{3.68136430463721*^9, 3.681364406963414*^9}, {
+  3.681364464874659*^9, 3.681364505115623*^9}, {3.681366389410604*^9, 
+  3.681366397496777*^9}, {3.6813700041211367`*^9, 
+  3.681370005063334*^9}},ExpressionUUID->"1ed8fd44-3c7f-46c3-bee6-\
+2db25da80690"],
+
+Cell["\<\
+Evoluci\[OAcute]n del cambio de marca de los usuarios de zapatillas \
+deportivas.\
+\>", "Text",
+ CellChangeTimes->{{3.680434976762973*^9, 3.680434994167223*^9}, {
+   3.680435030910675*^9, 3.680435090444414*^9}, {3.6804351797592487`*^9, 
+   3.680435308908906*^9}, {3.680435364541072*^9, 3.680435369929296*^9}, {
+   3.68043540150812*^9, 3.680435447745537*^9}, {3.6804354802355757`*^9, 
+   3.68043549770667*^9}, {3.680489882660924*^9, 3.680489885991026*^9}, 
+   3.681363437462122*^9, {3.681371461747923*^9, 3.681371491934614*^9}},
+ TextAlignment->Center,
+ TextJustification->0.,ExpressionUUID->"936582ec-22ef-458e-832f-342a1cad18e2"],
+
+Cell["Determina las variables del modelo y construye el modelo", \
+"Subsubsection",
+ CellChangeTimes->{{3.680489868598597*^9, 3.680489870286433*^9}, {
+  3.6813647639601517`*^9, 3.681364789509418*^9}, {3.681371496278327*^9, 
+  3.681371511590076*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"99989664-f7d1-4505-b5c8-86f9eb82f923"],
+
+Cell["Sea", "Text",
+ CellChangeTimes->{{3.680434976762973*^9, 3.680434994167223*^9}, {
+  3.680435030910675*^9, 3.680435090444414*^9}, {3.6804351797592487`*^9, 
+  3.680435308908906*^9}, {3.680435364541072*^9, 3.680435369929296*^9}, {
+  3.68043540150812*^9, 3.680435447745537*^9}, {3.6804354802355757`*^9, 
+  3.68043549770667*^9}, {3.680489882660924*^9, 3.680489885991026*^9}, {
+  3.681365102929*^9, 3.681365103692258*^9}, {3.681365401358488*^9, 
+  3.681365445084928*^9}, {3.6813715163341722`*^9, 3.681371516702045*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"5f42bd36-bf06-4d59-9930-1070a5b610cf"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6813651115759583`*^9, 3.681365136937509*^9}, {
+   3.6813652173491573`*^9, 3.681365248001683*^9}, {3.681365320423444*^9, 
+   3.6813653310539103`*^9}, 
+   3.681370834311475*^9},ExpressionUUID->"f88dee2a-4806-47f0-af01-\
+fd2c52addd7a"],
+
+Cell["\<\
+las variables del modelo correspondientes a la cuota de mercado (porcentaje) \
+de cada marca en los per\[IAcute]odos t y t+1 para las marcas \
+\>", "Text",
+ CellChangeTimes->{{3.680434976762973*^9, 3.680434994167223*^9}, {
+  3.680435030910675*^9, 3.680435090444414*^9}, {3.6804351797592487`*^9, 
+  3.680435308908906*^9}, {3.680435364541072*^9, 3.680435369929296*^9}, {
+  3.68043540150812*^9, 3.680435447745537*^9}, {3.6804354802355757`*^9, 
+  3.68043549770667*^9}, {3.680489882660924*^9, 3.680489885991026*^9}, {
+  3.681365102929*^9, 3.681365103692258*^9}, {3.681365187297597*^9, 
+  3.68136519563125*^9}, {3.6813653485694647`*^9, 3.681365372919382*^9}, {
+  3.6813654775817432`*^9, 3.681365514797388*^9}, {3.681371519885841*^9, 
+  3.681371577856285*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"aa4d05a1-7d17-47ee-be5b-8df2baed40f6"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.681365377653946*^9, 3.681365385423398*^9}, 
+   3.681370837637497*^9},ExpressionUUID->"523d39a2-70d7-4a3e-ab6b-\
+b72f40ddbcfd"],
+
+Cell["As\[IAcute], el modelo vendr\[AAcute] dado por", "Text",
+ CellChangeTimes->{{3.680434976762973*^9, 3.680434994167223*^9}, {
+  3.680435030910675*^9, 3.680435090444414*^9}, {3.6804351797592487`*^9, 
+  3.680435308908906*^9}, {3.680435364541072*^9, 3.680435369929296*^9}, {
+  3.68043540150812*^9, 3.680435447745537*^9}, {3.6804354802355757`*^9, 
+  3.68043549770667*^9}, {3.680489882660924*^9, 3.680489885991026*^9}, {
+  3.681365102929*^9, 3.681365103692258*^9}, {3.681365401358488*^9, 
+  3.681365445084928*^9}, {3.681365531402549*^9, 3.681365538135992*^9}, {
+  3.681371583452179*^9, 3.6813715943921127`*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"73ed6bb6-489c-49d5-b42e-8f5811b6672e"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.681365546393042*^9, 3.681365629065505*^9}, {
+   3.681365679501388*^9, 3.681365833658804*^9}, {3.681366347053849*^9, 
+   3.6813663487230577`*^9}, 3.681366420345052*^9, 
+   3.681370842901237*^9},ExpressionUUID->"25bee8b5-57ea-4add-9afe-\
+bd895baf3187"],
+
+Cell["\<\
+Transforma el modelo en forma matricial y discute si el modelo matricial es \
+una cadena de Markov\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.680489868598597*^9, 3.680489870286433*^9}, {
+   3.6813647639601517`*^9, 3.681364820987895*^9}, {3.681371598167575*^9, 
+   3.6813716266469517`*^9}, 3.728505168963367*^9},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"dd4185d0-35eb-496d-9a81-994d89d5a8fc"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.681366358578947*^9, 3.681366362250431*^9}, 
+   3.681370846485124*^9},ExpressionUUID->"f2985840-717a-42e1-8394-\
+9add5baf550a"],
+
+Cell["\<\
+Es una cadena de Markov porque
+\t* Cada t\[EAcute]rmino t + 1 depende s\[OAcute]lo del t\[EAcute]rmino \
+anterior t.
+\t* Todas las entradas de la matriz de transici\[OAcute]n M son positivas o \
+cero.
+\t* La suma de todas las columnas son iguales a 1.\
+\>", "Text",
+ CellChangeTimes->{{3.680434976762973*^9, 3.680434994167223*^9}, {
+  3.680435030910675*^9, 3.680435090444414*^9}, {3.6804351797592487`*^9, 
+  3.680435308908906*^9}, {3.680435364541072*^9, 3.680435369929296*^9}, {
+  3.68043540150812*^9, 3.680435447745537*^9}, {3.6804354802355757`*^9, 
+  3.68043549770667*^9}, {3.680489882660924*^9, 3.680489885991026*^9}, {
+  3.681365853545905*^9, 3.681365967414237*^9}, {3.68136645055133*^9, 
+  3.68136646430231*^9}, {3.681371630758925*^9, 3.681371653542686*^9}, {
+  3.681371684225856*^9, 3.681371775992334*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"aeca0168-dfef-47bf-985c-e12d45c9fa9f"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6813665105822697`*^9, 3.681366580564584*^9}, {
+   3.681366706017932*^9, 3.6813668313647413`*^9}, {3.6813674427194757`*^9, 
+   3.681367448008698*^9}, 
+   3.681370851821454*^9},ExpressionUUID->"84f61468-e5c8-41f9-aaef-\
+8186dc43e9a6"],
+
+Cell["\<\
+Determina el comportamiento a largo plazo (estado estacionario) como el \
+vector propio de probabilidad asociado al valor propio 1\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.680489868598597*^9, 3.680489870286433*^9}, {
+  3.6813647639601517`*^9, 3.681364820987895*^9}, {3.681364858469619*^9, 
+  3.681364873451352*^9}, {3.6813649409401503`*^9, 3.681364978063142*^9}, {
+  3.6813718628295927`*^9, 3.6813719242080917`*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"c8b288ab-7e25-4fb6-b149-cb6d0e946146"],
+
+Cell[TextData[{
+ "El estado estacionario ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "e"], TraditionalForm]],ExpressionUUID->
+  "d1572f08-8ae0-4fcd-94ea-6e8448ec04a5"],
+ " es el vector propio de probabilidad asociado al valor propio 1 (este valor \
+propio siempre existe en las matrices de transici\[OAcute]n de las cadenas de \
+Markov). As\[IAcute],"
+}], "Text",
+ CellChangeTimes->{{3.680434976762973*^9, 3.680434994167223*^9}, {
+  3.680435030910675*^9, 3.680435090444414*^9}, {3.6804351797592487`*^9, 
+  3.680435308908906*^9}, {3.680435364541072*^9, 3.680435369929296*^9}, {
+  3.68043540150812*^9, 3.680435447745537*^9}, {3.6804354802355757`*^9, 
+  3.68043549770667*^9}, {3.680489882660924*^9, 3.680489885991026*^9}, {
+  3.681366897521811*^9, 3.681366973380027*^9}, {3.6813677422073383`*^9, 
+  3.681367747622127*^9}, {3.681371940793467*^9, 3.681372045921739*^9}},
+ TextAlignment->Left,
+ TextJustification->1,ExpressionUUID->"50546490-2fa8-491a-9844-b8b975872c99"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.681366975648464*^9, 3.681367018220974*^9}, 
+   3.681370857093177*^9},ExpressionUUID->"6e144102-937c-46e3-b256-\
+0c1dc56f88fc"],
+
+Cell[TextData[{
+ "Este es el vector propio asociado al valor propio 1, pero no es de \
+probabilidad. Para obtener el vector propio de probabilidad  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "e"], TraditionalForm]],ExpressionUUID->
+  "5518d21c-159d-4c76-a908-97743463915b"],
+ " tenemos que dividirlo por la suma de sus entradas"
+}], "Text",
+ CellChangeTimes->{{3.680489889422386*^9, 3.680489891143651*^9}, {
+  3.681367033606248*^9, 3.681367098551153*^9}, {3.68136776065587*^9, 
+  3.681367762286518*^9}, {3.681372055101366*^9, 
+  3.681372126723165*^9}},ExpressionUUID->"a83c5f52-1624-4cc2-bc09-\
+306ab7f070b2"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6813671013581333`*^9, 3.6813671256869793`*^9}, 
+   3.681370861469016*^9},ExpressionUUID->"651b3c2a-6919-4db5-bc82-\
+424c9528853d"],
+
+Cell["\<\
+Ahora, asociamos los valores obtenidos a las marcas y las ordenamos por cuota \
+de mercado\
+\>", "Text",
+ CellChangeTimes->{{3.680489889422386*^9, 3.680489891143651*^9}, {
+  3.681367165140017*^9, 3.6813671928103456`*^9}, {3.6813721299942827`*^9, 
+  3.681372184102757*^9}},ExpressionUUID->"40e9a60f-5bfa-4e47-b074-\
+0de1acfbdb38"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.681367199736376*^9, 3.681367238369399*^9}, 
+   3.6813708650448017`*^9},ExpressionUUID->"5279ccf5-9b4c-4054-a69e-\
+b7ad63737a36"],
+
+Cell["\<\
+As\[IAcute], en el largo plazo, Nike y Adidas ser\[AAcute]n las marcas con \
+mayor cuota de mercado con el 32.32% y el 28.88% respectivamente.\
+\>", "Text",
+ CellChangeTimes->{{3.680489889422386*^9, 3.680489891143651*^9}, {
+  3.681367165140017*^9, 3.6813671928103456`*^9}, {3.681367264086487*^9, 
+  3.681367284988276*^9}, {3.681367329458638*^9, 3.681367382289218*^9}, {
+  3.681372192319778*^9, 3.6813722459388*^9}, {3.72850516025771*^9, 
+  3.728505160583888*^9}},ExpressionUUID->"4fa6c892-1f41-44e9-b22a-\
+1a13cf74daa0"],
+
+Cell["\<\
+Determina el comportamiento a largo plazo (estado estacionario) como el l\
+\[IAcute]mite de la soluci\[OAcute]n del sistema en diferencias matricial de \
+1er orden.\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.680489874369685*^9, 3.680489877114932*^9}, {
+  3.681364995352818*^9, 3.6813·1 :84·¹2(°³Å.}®+3Ž4®0;²’ ²3!93yÆd[¤:¢-`34TÈ6¼$192¹!:·êCK9µ,y3.:y S§b#7	ß7at°¦É81;ª6*t66¥2ž98™9=7(#’=u}<MÍ*(!X|CÔlgFfÄn|{m%b¥	¢8Td||Ët{thf9RAdènm`<1¤ÔX2à({6i/ïSwMVål"892ê`uyf­{dd7m6%:$<è7wc)ç&à=Rý6)ca$cjY%J‚CmýXJUø|n9õ“I{‰$ÂMg":ôíwÃhÞ_w\EtbMd¸E0'x°iDuŽà/ee¡mÁâIK~ "<,@tl×Z/<@ed1Z\:)!J& `Ê¾pÙ
+" GoUoò;/n/° ²WqcrCp)ôøBdp{"P¨ì › ;qhÇoŠlòR{
+\n vC=bŒ l5*—]]®!2»&¯"­+°| Òn7Ê~xYy ] , P"á.-A2·)ñS$ã{ÿSiØdJjes"­p ¢}lUüÙä¤”[ìë>i?nA&úíú¬IÜÁx1°%ò1hêŽSWYBg~F`$8¦÷#ñ¾ànX0vï-2‘}q·ãr,42f¶c'06„b[(/K r,¤a3P`24-`ÇGäL."åHÅä<#"L?y1MnÒFco°s
+"10ÃµšA+téjt@èYQ"x¦l-19R|,pFsU$Áz)îuÌ_)`e<o®e`ðf%sÿáÏòÓVEf%	 !+13¥÷F%a-xcFr%ü±³ ;>À­×ã³s0àåci Ë‡ "0Fë	t
+jÔIÑióØWCa'`fQn+èì 3èAd)u2èb A‹ Ìd.dÐòÏz&eäy*#¡GoìéR'p^  à{u «pWù=Z (!…brc+hp9¬S3Nt­"uŒ3b2, ETä`0RncJo0kû	" 2!(supUrGcpéHlKnX×¢Mb.R-d*}š¦ž ±c3 ãfq#xiptPO9O Pf¬¤£05]ü_ýD<8z¼VIB{SlO~m,ÙYug5Rq)/çÅK>	Ê$$7¼#ø<m-gC‚N”48Jwdívtu&w@Ãû·83b1Xm)š(*y‚än(cíD@'>t-ÕcaÎ5o&! /Mr¦gDilao )gsãtn c{r{xeÌäæq-) qer‘M¡Cå¼e\ Bˆ
+ Wh}Ào\Àç4uy 3ÍW}Cøœæ26óosï*So+`"%&syr32kxTâcüK2`g=ðpt#d" 5"í!ƒT B'wXÿb\q"¹4 zuuÒo(_a!0¤¡  f+dm¸sbrNrVBê[Ùb$@o&)	, ¦ !@´Î>2Qhrû|lü*&üsSíç(¬AR"oUbd4	*á)h0ha"U}/fagX{3Š#"ø ¤_\ìÕy"ˆvÜ0tÙL}- ž"71 d*Ðe‹÷Çya|7Fc{›ƒT$±ÖT#ý•})3µ"$`ºaa9¡4ÓvW*ch+{%,,"ppÔgdgssèæ	p6Ðïps"úceêl Š¤p  	lmwBnPIÑu2(‚r\SBmç³TP|Òo\b$0ª¨  ]¡FêW`gpY3‚;o03^;(êcx÷eu}Õ†a]5ÏU\EZ  $ªXCÕx4RwiH#@&J-yfc%®,Žb†]˜€R" &`TQUpsc÷múüÿz€]b s1&ým¹\ Zô|é¿moþco¯QOE],MøxwObCénIUYo>
+0yf-{¦?“3ä$=8*±ï5u.v=#?14Géù ²8’rÅ`"IdM";(Ýb od3`f¾ëŒ¨".¨ÚnoûTøiuá		Š¬Vk2m€¸9K]
+ è{}tPÿÇ~ke$"oHß!k2$"3t*q¬bpaxùÄ:-ÎãÆto=uQégUÓV+O.\U	Dm<!bÛ4Vwâ7$7d4Rådñø-9&b©èäÙBT0ô<¿¿:Œßê(0du<pE(bH,Ãemq£R' ù`¶A%Cé|%eDâJ¶((9Cm`{VoqDôö_ª Bj2eÆoøQ¶oÊ}*Ü²Q#Á|é¯N"Mfn{,ÕÙ.%<pðe³1èË^]UíD¼
+*Pv´"}A.V+>9gµ˜d3d‰`?°9iQ`s$2’:h²B:\lŒR ¢ wcwàa‡tsc2D(åtíkBaxlõeÁÒ- !FmvmbNlY0‰bž&ÔòagÇvyg/ƒ,+rmýM-xxúSKíh×ID->	(ü fcEw0qk{9¬š;+-|é¡m1/µ"­dmhT±æ9¹|±u3:Y<I0"ƒ$WføaFïÎ)ìhraFÜm®Dn|ï^Deû,,cNv@âir)m­v p‰!B¬J&%mL[CI4qauBjÆ j]r-Cgx+/a&"Õ"dôìöé/nqd¾-mYLŒ|˜2ps1kï}1JE=¾©!
+ã²²oF8X)C/á797´ðAbE_Òe!¹8Y£8'b·7;j]O
+5b es!ly0kI$K©J*hm²]*}V¥(\|k<B<	H!C'<dK¸Anníài/Íuy¶dû"*º94µ8>-yDz&"x,.{,P2¬"$ ´0x8iq1´21q8_±m¬ ;©a`ûæ<0(31Ö152UY¬‚?/62 ;6<×ò+·g±=7.Z9&0Ù3&nq5vt84„áz5â3óŠ*Øí¤ 0 —,68¥4§¸3%q%10â@6í),>W/?^%cW?hxa07¹9»~8,!0ï¶4!‘61-1$·¸´q!¦:j5Xd¢û¬, ¤'#2* 0:80rü9w¤;î^3¬7&ö8¹?& r$·`ð2?3tk_¿ z3žf913³ã#³q6uvº2
+~ù, !¸±N)±1>z2U´"6ò5©N=;olÇZ6e1KK:JUIM¯$7k55y)w:dR)-4âe-`¸Òv)m5e03¢06ki,‰E(c~YïyÕÁpaW¢¡]è¢Mn0}±"-*ˆA}cdC8öGM7é.asµ?ùÅ~p Q/'|468="°1öqy ½?þ+¤zó,68S¶'#7u6u1»ªOq.A¡ì·ü¡r683¤y0?x³¬”_/ /L°  1šö¹a37¶ q10³6*;¶óhxžZ(¢³oo:K:^¸0.11·)]
+^Om( zn6z!u¨³¶·84'¾6*]j,¤ã´* #ír:aºn8c
+è²33C:· +[!e,$í6"è(+(0,³31@\562:8578=s E.PbEæsýgî}]i-?†au&s=3m-7õ"cv&?`¬´$?o\Z Á5å·cUr5 ö"¢}'¿+eè	{¹IltL`ôaYk
+ 3OëçÀoÄc voa)s	Èÿbr*qJthY1$c®g 4áD¦ gdFG³, LJ
+txi "	$SålÌÒPyVa	H"5osýÂ?XËò_;¨`´ò!`}´}m.ã<f.Q}…-<Å:4p%s3uo,QSG-]'20ñ;!¨&%%-˜åµm×b8dp(²©e·Êxw!1#T:2*ÍÒ`º!lS
+&hauv.Ù-m{5b|·j( ³nG#õôE}1?\jB0Ìa{ö"ˆ	
+ `n_çhrgVeTMÀ©û¬§ûa3¬~0$ê,9”«ð·UQ [ý9=!®´¸5;}Y07?0"‹¦à"Mj}`yO	4$3Ø²<9´6(²¹#=2˜z*Ü!%/?ªsã4:223>y7=
+^yq<(s®6X)±08'°5(rP~'Š^09²DŠP a6|h#"+´W1-:27„Jþ:7|b_²¯×øq2v8$Ü1~:1°³çp*_±ì"!ƒ'ºw¶•N&ú$£65_&6=}® y023~8¢f3;*~:8Ót9)<8ä85?2±[¶s¿/Z9=ô¶±ˆ\]º¨\AxþÓÏikþèæ'f­.À0&ôÀJ
+ ÂåpuJ=w|ifïf#|a­./w·Xr%r!vj]Í-ê"aª#ôð7óB¾f%a{/½%f4Í87U-L7155$ãD6î„¢Y,é+Íl|n[©Øt†a5I[{,*$b¹/"÷øyBí~$A4@ŠH("os>Dò[‚*Tÿ5h^xGz}B" U}`Û*²ëat;;Zcà<1"E ,¨aM"h4	^  œ!RmWZï<Yˆh $#´Xn%,øO9F* $0h”rP!òV?%àlFo,K2lI]2,àMj$pè" d2ÃoÒbfrx±t6­(¢]_YKK(uG"ìg_24¨é)q! („ Íwcbã'ê#b :lmIn'!f|TîÑýY,< å’#a(Wõhwqokº|
+Ç4è`.*C_$!*u#| Æ4%  Hbi5Btj{o	<Àf"1!ÒjF÷˜Zz-Q*bc²f¤eüãcKaä”AcPËc!EDÈ, É p V& .—OV÷~Ys*p­!2AWB½sX²!Övmw"æ+m ø	`° orBoRj›¢4 Ü;\næbNè|iÜ2}[•]Yå J H"I i+km7Hp[§…
+$ ) (&Rõ$`ýcnfm°ßÒïkÏrL*%"tf¼ ;@`$$h| ~v³£fý`VBw1Û.\ª.8â4.]ñ™^.0q<L'„Qd€ ,aROgoXZsJ,"K (€!Rï?/8os2 c(J,`ïj¬r òs4 ¶"O·&ExX{"*zlG…j`"
+²(` ° towBûxÓpMÏ`N¤ |"!à(b5¿D%þsâi.ðD_ûy$fë‚î Œ
+Å— "  b!h Gr5>WJnŸ"fU"­(J}_MLxréï" p(*°¤ª@²p$1R/uCg|{{¢"t, Ž˜ZJú&k|q\"=ým]T 1! $ñ`0 © rcÕåvóRr+púJx#L´ &TrÍ>õl f%k\ý>|" (0j!Rd5éð |Spnþ z	qT
+sx_ p‚¬ ½3,  8,bESogZWë—fì$¢s}^rà h ¨2yTaóÁvi9}BbØ»Xj~-€"_d- ¤   4ò1¢¬ !¬z+Ò 1¥ 	4%Zo¶S'|Vy*Ø*,s¨naHh Âdhs(XowƒxÛÚbhB¸ G0mÕCê›¢à  ¢`¢°p0 û bñ	!$"  ­ À"ï4B!zÊk%93$ Ba! dHª`Ï T.ìeR3J2Ï tB=è3"ì¨E : 
+ª. 0$" À%0  ¡@ì[$TKz²°#(!"S»i/lTiBrõmŸ!(?0"`!5(€ b ©"0²s/uZk8_JŠ#ž)"fZI>gyî%’o=.]½ÉýVêh…6B$!!€ d2! !*1õ@rÿ`0 Q_VHXvò_p
+ÂÜSõlad!\®,ešë, æu"_o_è kxRÃgÏnWrU`|­`iiÝdzh}î $ !d¡5h  (&0í,Š` "4â1'( !kâ^KFdrVi1!¬Èm.h5{]¦á»ZçECïg`,‰gGL>iÔóm1* h9( ("mª)€$ ú]veqwiBAdj¼ñðwmWÐýd )(6|¨0 °¤ÿª`"ì³"V[ñn$eBAlèhT³msÝ"n¡<j  ) ¢ˆ`$!(%SoBé¸×+ 5A&€a 6Hunô|fqó~åTs#mø[¸Hhx/: D<!=¨¢ p¤!0*Vû>ã|py{õà¸0%Ü/Ðù'(<@qÂ%vƒj a
+b°$4b ã&¡fˆ `0R/SAïx×£*#º((ªÞ_IN (l`h-\£tK<iß,@-p !301óp€ fAjÈ˜&rdbãa8tBîhÓÜChbMëcÍ , %›³
+n( u.mµŸ}`I®f $¡
+¶!<Al(&!æyêè•Ž !1¡0 d3uP'z4#êÈPræ_p[`g= =( $¨de #lVn7Lõx[`
+ $`9"}M,$êh#  i vS÷æRës!fJæXY4·b(3¸2},h"®G=\ÕÝm]}}5—,aEâiF)dicfÅm“Nçä]]%N, ”ehrIh)Kþîíjü%:ãvæuZ(( Ôm8tiý³”ubgc&´joí!¶ n(mZýPeó#k-nQqMD-¾cFõ'6â4q-âhv)V|"E-r6-1=4I²tr4bá“‡=Ó¾Ý©/¾Ý8`ueXè¾ 
+4CGhlRja&·uÔm$sl·Fs+f¸¢å˜)021q³16ëV),€?&vpfÈ14%{5®+5?2à35\.0wŠ§3>5’3×h¼0åµ204*ž;( «*–j'b(24¶)˜ây4*|qd:;#/6X39x(0!z0´tt+~™&h‹c?ï3°0k|5iv"r>HØ1?< y?&e»#ûdz7s=±~7½¸52ôª^=4¤îv¸Dq·~73© x#"X9àM¨¢Tá¨|Qjé×k-dn¡ AÜQò*-
+@Lí\Vaûô{Ê»[cmu÷~&< >)ÃØpb)s:à(g±ØI¥ãejpd¾&ô˜,L3i‰í412-42dsSy7kRh™îb1t'×%*	)êmn&#|(P…%;/cs',£+m:"be¾#zkôºazèÅW$<¤tbüo$\êKó6~dlzr£qP2ßpí®i¬.bxE-ò<åpC<(LE†\bÉíoáï$+_)\AGJ"å]<=l€_nFhEê/Òcc xu"9<©Ý<&, T¥bø.Ž 'CyfîbiÙêâá(iG»>>?™3&2X9v‘;9é=0¸§±>R	m°S492=>)9pa3º8;ƒðw$*9ü8r+  3r>¹76ù`q“=,Vi52¦1:“ó-¸±69È2¿%£Z), ³.38%sš&`?6p4´³
+]½H ¬Bæ ²^1™ê<ß1T034*Yî¼`q;$F)q;f8:39x'™³4~Jkz< hñ.»6I36q&¶872~½i$}u	
+h!3&R(1p:;5#zº;òk¹Ì÷tw,q"#‘½06p718#p*Š#<y0
+N òÈrAMÛj!çJv>>‚$fÔ _°tjø~KUYöIná¢P¨Ym½:9ü,HôZsaGc{­dÔU U>+a4< Sdcmù7b¥<5DX5j¶5Ü"9#fV<tn}7‚"<>|Œã!,h[‚_¸D£äõß H@*Yp!42!b¥XnË,!DqWmc«/7zy.^h1223;§2÷r!eS
+_6$ê'~!sæ(¹3716³;0ãÁ}ži(`	qp [º—4!S:(05(?s6.^9<Ó¸X3e{Rëo%PWMAc~±qsñ3a5:?h/5²LwA7±>üXÍ[a§²$³%vvVt€õ,¬*/Cà,v“DdyuÕñ<9{y†`"Ei6/î@Msd#-(J¦s}l âìNÝtqDÁS$ˆBGgnjp¨@¹CíolqØŠ +0iSo5JÏ,Ø}­ª:Ã t UotlTqaðIPqßlx*©ém ,%
+$"³l),Ão„)mxûY2p`7 ÎÂÐéJhf#ªóÿWt, cJ!pÀ(q ž~ó„&aci ¯:,A"ÿ_IlEonktu—_ÿL,0¤ ª%#"ÑU`s}1 3Sïry´dClyÚ¢Ô[DÓmjq"ë ƒy`x b|²X|\%hb)š8!0y]u¬(|^¡dyà+Ëí3dÎmfEýl
+ `p%d4mùfÊeTîÖ)>Gcnuc2­Ž(@@åxDVswuiwIS`´AçD,8$>>Aè0WGwuygþ4uYF»:n%¤¡$b8?õi´Êja¯6LTÍk`	ç91æLQ±´*1*M»J&#+™Coð <F``i93N`üM¦%%¥ 4ŽèúÍ#_F?0éLá1M^p,§rèxÓ¯€{  RoFZçX!ûk8£c8KgßNxYZû"àˆhY/ ãAxñ2ÔP§xo²¥"/0"èªà "Ú«COz{ <WT*¸PQŠag+fibbo7]"m0-
+ ½ $`cpköÚïxSk¿,b¤#ZQMzflnëpq}aý_]OW?",¤*¢ªÓfgSTqERsv	=FWgé‹"Ý4A1ard!oJ/+d!"!*æ#UÜ4"=g4 °91xT~taoitx.®dùÆJòñØÕj
+M(msd‘Ü)knmm|f-¼PP~ùeóJ8Vx`b5S¶¢âwG`õjïê)`¡nF²2æs9%gâ–Ù‰m*@<>$`<Wf=¨%ê`(u)r"a¸-9Ut|=r17*]âQÅf›&OŒ.4¤ COœUiÁc4¥IÝ,áRE}o}¡fäI‰lg#^[QÛcw~åÌnCulïñ4aË}/isb.å]?`£VAàTb
+<ƒñeb‹X.$5IMGõ<?W;.¶ 0é© m8w352Šv4Qw6(tT8¸©023òo:d(¹] ;'ë2à;<3\-±—533•$:t*[è2¶8·0|>`”!x>:ù7V§Þ9}iNùðdv q;¶881w"=´6£^Ù,uN°¸3&&<²S68¹¿6yÚ64+_9é,Às>$¡b>29˜¶vAÞ56&*Z§/3n>:ž5&8>¼7½7ù7*\}Ïs¬N!¡2L7<·³6º°b6˜|û¸cCllå®4 18²800<pˆG%c.![?˜±213 )&&ƒ¾1n+
+„O
+ ¤;®~.¹#<3a—â6º6s4aÕi=m 25&28uðõ52w6f%:j
+¥7.¯³(l9=3$t$O´55#>\Q|,-(ÅytÉhió_pK!Uätnt,H¨T}{ 
+Dcp)Fzcauë'*"a.Å|Rrû=icnXAÉD	¾&âVž>Úów)¡Vy½	%40tm"©Q9­uº5gBb5¶e?ˆv O,*#qÜì[Qm8vD!ôuKxŠ$":ªI%ÃeßXâí+$áÐá_o˜!"Ï'wEF¯8Q-()TS{vBLyRb)*!¶fGtc»éðÆEot[bX&-@&W0Yl;b#`|¬"2m 
+ ", 
+00 5Zvfxbˆ¤¢à"P_nBll_ûâÐ" &ª 6- GÀ! $$«(`/{TgyJª¢(0èe.é$RKz[{H! ˆ a%¥!,kÛ3:	a1"(*row
+oHSÒŸ*  $2bfA¬ð 8Ñ|T:ýcP¡whWXŸêdk-0>dL
+(<  `  $–" jÆB+t[{jd",P]]Ð!öÅ6ä´Ziõîf
+" ¨À0€$ˆ(!I ×Z~vÂ°’ñ«"¨´ ýMjáÉqlwl]¤0	Z
+" !$i( 0QÀWTxqbSÆSôeïM O,n?äaÝ&í($±´, :f³]=[­£!¸S@@&4m3HüOct#iq"8 …¨0:  ah"á€ *ô2Mìc ¥6¢ `€¤w6ÜÐlZdKyùIÇlmixqH÷Tb/`b¸Ú÷%acå&pkê§(lixsù£9¢,ð@0 è$q(q$ -XT{Rerýia`àa,oO|s©Ñye‰‹*x	0b‚) ;â05á \[caíôËHEeli0wÈc2¬
+J"0£1 !¦#–~B]i™ÿÌ‚`@$¡bT U|eÒâka-øt2+tÿ"`>m .h-t‚ € ¨$ ¨ 1!p]÷JïþPb§y",â:_[PheHQ`ríÞU§0Œ
+$p$ )Arr( ²Óm+W?z* %ªŒ(šH~din¸|y5ã]=Ï|,$).´(@°¤1# v}Bó3Ðu²ce`)ðõäo:[3t_lq­"dao"n0$7Òjýb}xI¼Ÿ
+` ä¤(a%èf "!yý, )Š,l ,B Sw$Û²i8Iòä@{SgÚ¢
+-	X!, ŠptRïqntkck£m  yï]•0%M $ðQ² ës+Wäz;p<^o["XJ,Hº(W}Ùè€b!a-`"`"o`
+(e‚  po#$éøy20­$"`&l.aC$@€V_yG`Cy*ì"TGR©b/xÓ{â42À,0 ¡!",#"MÊÇ> d(înccÄSB1"´:ý/)ÅºC0<h("k4L[Dlr]ÉeqwG$Ü{xsIC,€|_Auccsoc}æÓLl6)tò{ÕX",<]8  "$(UzBþe$~íaC,nŒipõgEò],‹(a $8	iƒ`ßb–&(<*Ù_xefpiq^~dJ´réu/$ 4*iZ$D8P±å}7 Š9$|[$#m	((  4ÀuÐe"cóhÐô^g™s"Ð*J¤…!"8„bÐoÊkXÏ{¬ ¦&1"ý^UB	_¦8 0¢$ÁA#1[v[ôp^cxò€b¤ @2,ä.(Jw|]\Û}"PpIdmT»-(alb/rŒÙ_4  :Ut\EmàfæInl.aDjrg;®ñŠä Ph]äB”dëVQcF²loïbî¹¦<ÎdpeãSMîo$Gyì‰~Î rø ò33+\´i"(49¡f!Yˆ6c$Áæ34>xa ¤qn‚Q,y]v‚!Ðe¸t7n¡
+0ãlÉ'jqJcWTn-Eum*Ikq<2(”4›r819”a?/4$8ßl2µdh;y´/t73 `ºL9{d±ëK"$1¯;w4(:ÿG 4ž^´ˆC62œõ':r7q(û1©4,^k,	û÷êf¼²žu˜w*799°48?:~h,!]
+ $:®¾)13vwz±¶ù6"2&†>y,,i³*83°4°.34·Fq´b‚_1; sN´ù13¶8vq'a!óz^¸zz4)"™j–¾{6q¬147…q:8h»ì!—>6²Ù;;>xW1G÷4re;n1íß-ŸE)s7xðA\=ON%õÞ\ï|A^6q%¾ Dm8tÊs|ifis{v *n/>0¯!x`â!a·hm~5TK@'~ a0)·àcr,|#{j©<é²-BôNÿ2n"±7.eþ5"ªÙ%-:	"Mo(Û-hYFcta›[NåbÅ%òa$£e<kwüu²5F 2Nluãè*@l4åsäbô3„aO,åC °õ+Qow„q$D¢dEfin(v3tCam`ô:)  :në\Ocu,'[:nQit¡	*10‡û`%jk¼Y,
+¤0 AouÈï(ÊÚâ("<±`r)fÈkÊ“iNb  ¸j :F³´-¦&\£õnÑgpU\féòÒy_Bj$v"¢ü,Ý !  p }"ÃTUDüa#aHUh<,1qÉPU("À\Ûd"'Áp	,e@È¡Ðulsm ‘¢ŽûW!R@èAH5T4i3SàyW1ý<Šp   !XÓ0z¬!&ÀSÃ$l3eÚe\mh!¹mqE¤ld" &û¹Ê#0!¨0]}?! !.$YìÔ? DéqzudH|eýRK]($xùê!mÉkULD%þê¬e%96C61«pâe	í`zÔ$~7iæ/öe``)¾%bq<§ld-æm"‚¦
+ŒU%):XÇy&N'6(Re$ìC`áSd|meuvi¯z{ƒ* 04ø,1}°1QQŠÞ(Aíó<0v8ù2à=37®µi±Äô~#}~¥=  4p/&˜1³><00550P^ù* ±'®8y=5	0r:¼*0?t.®^q-ìÛ.68#ã28Ô<7Aù”ðp÷Œ\m¬bŠ`„ 769Q’>4¹a4;20:N¹m¤¨{'
+ryó 6+s#0}.4³t6 +(> ƒ.fZ1360¥130¶¹(Ô3Ïm¢w<¶·n6‰¢õ:,80*¨%3z˜;*:^¬$Ž&¸900u§·5‘,Þ}½ì±itn&z¹¿<vpx1¸_¸-(==à$+<±+_ý8³mÁg¥+~{Y${³o&,9ó1ƒr·°4s6×bWè, 1þ4M1²5¡;°91t2×53b?^(|ÚM&¤ y34Pu'¼?·K
+24&>%4¢7?.ð=q;3& r‘=9Ðoà
+^y},Ç"T´8103«5l35\lþ-U¨¡'xtBÿ)Uiaïv=ÁKnt\	 Va)J$ÓXmnJcg8pÛç­21/eÕ\q°åëagl|œ€L-;âUEÃ´6&?F~¹1)5&³4¹aä,³5U%±°dµ30#l|©XCa,MûBohÆ%PY"!]h0*­g1ðm$J šg/hOj`2FÅ\mkD-nrß›Žêè7667cb° 2'p2f ž0(45F79;vw#`½;ƒU2!ß1{${0( p#n­(Vb>ì9tÐ5·+¶œt(w®25»g86)h?˜}j>¹ýN!`v0&v339>·6»2¶²²*\8y$Ñy SEóðqE|UI\m+xcf`¨0xh!(£4ù¼Bf1¡¦<wlgŒ‹­"b€sf K0…#'_n„+ƒCelîI È,a,àTÅcqnô'@l`,p=p!(etèff…« Alp}Á(+~c?„-eóí>[é3®¶00”=-881P%?IpúfN,»­6i04¸:7¢/289'e
+Ï­u,"1JB}6ª0x1"6™²37? (4JÆY$0:?>¼w4(3þ:Ø8R¹»7º\1y¯ {#&p:3t¸_H<44"'ªñ, 9¤ ó
+'xa "Y7062"82Òz­]( û#.ô$?80²29vü6 ”iIHfßæp¨'68»W's»¶2;6JZ9ý<!_H@è("$8×(8_°7¼Õ1¾°*anL(m$ã
+(5+x=5Ò2 4}b^mt¢o#.Öq%uy&%&õa™X}X)‹
+#!3p8u6i5±32#¤¶ˆ~Z9n¨KB¬54sO|²&s_44"65ŽV!()³¾t(qº60s4!Ãs1»U55á"^X}n jJ*µ>´ñOG³7w6r³T092*u-¦(3³¼(29õ1="}2270)^9]e.2tÐ9<K<iqOmd/|y-D5ö$OŠ‚AþEB5»U}f9Ãa\-í_‹_¡lap!C,3qu$o]TID)l£ìí¼dµø34#a:ñ2å&qìåu¸j#%2àh:¶R"|,°þòU,‘*-*Ãdî½ØC/¸}ð.*åìkÙfÒõv´y
+ )çdâàÁfwç}½ìc,®á¸+ö &sv9a÷6gö2†2þ9- "|212´Ù¸õ°W586r®©ô9ÿd!{EJ#,+®29"ö58	(}3:™ª^Y=Â6$#6Y³6µz‡92Þíí"·³/6˜ó:¶)&Z53727®^=,a‹( 6˜83F91R2Peu079(|1H[;®—0(06-\09þS}”9.Z8.¡“<ø9½¶)·ºó$`²5·1‹N8=9 {-‚b¥ ±Žö<vv&¯±°421<c.yh ¹6ŠTwv)6þ9-1ð°ì*TN@-(0¢¦r¼35W$p(´6µ¦ß;YQY|Ûp•kznìn}UÉˆ,>²âô{d‚‘x`&¨4n+{Íb`±?¼LŠrDauâ7D"!l5càM$;ˆG#L<[Tå}4Gb~Y™{$4DûQ¢veo#ð6‘(J£`b`%n+,q$Ef!ec3AçDs½­—¦!ejdm ÇÏã\a6·3&geìeñù¯fü1ÀaS(\ˆllb«,£a|\k{ ráS#]… €hl7ánö¯áÚ>, qÓ%Bs{{kwlèoè˜PI¸| }.€Tjwíiuh/g (Fòo~=…Uùð5_³9híEuHD.~*!2pA§õ¥§/iåI«,µÔó¾Dh\2¹Mr]e³—(E}24f¦e®*;B qMRò%SôfNdÕg.ñà|Ag`K£gp`’4m'$¬-²Ó a/$y<B5 sõE#mQ•ëËïî"0  .t,Gmsó q]w"*\ôA$4ãpU§,	ðCe,"C)áæG®<meú-.9úr®w 5989±6W71²û=Š"a¨&°:J9?–?236 +Bjq8u,¡q‹J{is.24!– 83{µ/Wx$¦1®7:11:V2:(9o6G1É0[	/7#1êˆ&v{60?¦T9¥b¨ÂvÑ&^(106X­¹1>;>3pœ,_9ÿœ#91ŠT:3?<è4);=~(0%’@iWm$,3-8ý±“6:>ºù>^®¶x_9ì, ÿ¥ v€&ì:x12‡<(´(7z´§â¸rà*“9¬pñ>“ 1"6(9<Rc2)7#P8},(ë¦6º1°>z14 -ô˜©éÂ¯½”F‹q6dS+cm3a³¬?ý¸`6(|8l%RZ³+3:Qq÷$5t=5§p"^9< rl[9y¶9=rž²7>**^Ýˆ(ÛN( %Ò76;!2·r}8ì;<%¯,¥á5l|5³>r±59´s1y6ªF»y¤ i3Ò	³ 5\£Û:¹ö!jR9 J¥Vjtc 7*¤¨T7?+´- AKv˜|}(ÝŒ TiX?Jè!gÆ*mkTM6d%Gu"0LddBDqueVqc¤8|za¼®<ÇpÐòóGwìM¦WõÉÄ¥¼¢#q^Ìâs-?D25”'oMus4ay16ò²3cð3LG+.šeHlÛ
+o8ëOCy[¢ªM¸ òONpÕä#9-‚Zg}nls‰aªgiVj¬ík-¾}ò3,6¼-648w"²~µ!78*\Y¬ ;:æ!#v0c:ú7	3j^)yº"y2àE.4¨;yxu.!61V4Z%¼™7+6¸>§d;8780°b,/¾]9E,"
+¨ 3†%˜)!¡¨}’5:|<F3 8,w¸e|x3-v°8ãrUõ2ÁþPL s´¦Q³5­bq2&.&µ!(.4«´?E€'t—*e=iÆ1:Ù9*O
+m$ìÓ‹¢$h-lÉìfgbÅm*seo0cerõuDhOhqua¢Qf}iØomxMEötD®"ü€¢D!Ê5‚0M¾ Q%lzCcEnó®Ôxm5ù{i..9<8y¹`)±42q>¡W98.6¼"4þ19¾r2%²33YsjÎ!­ëÕ 2(q"¦©=c¶j6K7560Pz|1)ÈPž8#*³.3<j-¦¤w;}Ç$]¿^¿øñ#07PS¸8°1°Ö~iŒ*Ç
+(¨.21³:9o°Œyr3´
+^Ûí40Nw¬61f•š&399&[#˜qrjZ9-¤&v4±3ð3€rb46ý7Ô({( {@
+‰g6(¥0s;xVy÷hõ¹Rxð!Þq| :2-Q^7™4~’0`/,‡.j9í,b}r&pq²%¹órtºµ8¹îß$  (+?/rº<s4ý0c4i%<2êDä![.6."49¿÷¾˜}¶#5qY^8`12&vsey73"<3¡44l8=ª.8Ä0&6=5p6¼yfL0s?´¢H'N¸ î5  6(©/1vgž51?.;],(~ÏöY3&³89°²&#«=¢V¹,€©ª°ð1®'9°±s37760³/–-}hZ FKyöcz#*m2öô/hU¾õ(Š Teh5kQwxÍ&iYÃ0Ük.eZ065i0æFõëß~zE_Åa/[8PX{4Klwmý# :(3 x
+B“*‰y'q¶#41saw<+Íh]<|nBÀç¡k$a]bê
+(2ËLt5f"‚ cE-x×êhjÇ¬PqheC;2Sc>¶x"¦)%p:"±1²6âo–É 5	Ÿ"¨5.?0q'B=q56/¸<•!«P{t$EXpZOw'nŽêË?	T%>9t61`ä3t1?5¨-)Q5—¥}he-b´1/¨1qâyG$WJ¿l*QÍlu¿zÝk/aÇArp=N•dmtÊ+q€-	áíDK²~ya	MAòOèlYÙlø
+EKjeOw3ñre-?{9q+F-|=P¸­[ënDm×Lévoåvs¥|ûë305¶¥¿mc'õÚÉ+>(i/A;6(õpouŒ ™´þPŽKïn|rÁg _-rqy,.¢}ó$u@rT1mIyK0u!Y <+0¨ˆG>=oLÊ²s4¹FÙt©KKpke÷h(èÑe¤åmj1SÝ¯± d * 	b$	
+Öðla@m~½nivè/îs&A,5sv`oMd.ëz %I¶ú¬ÄÎtpï!*/|e`h<k"o*vMl$p:!I
+9"Œ£Kî7Av@Ih I2fM4¤éê&_Rïáøi_ì2*yløkÅdf<jç7Ottl¡d	ˆCdÀDpÕk`OîTmy%®ilGŠ>¥J("Á%ìMvsIjägæƒBÑµElBüs©Bn4xm/x]<%Qª,kS~4efw®i×ytq^s|Máne-FÈNdmlíåo{u71uN"[‘1s,(6ž” ?¦¼L4·m <a<  |äpn`*€p8B}v³inQÙF,+!b@?ã¸`-0³i%0TtœåxV:¼3g0U=>a12 9‚*\ÃÉlv<(¤2™|!¹1;,24¨0wd Smsuïn‚,Å|`puqb(nnuEe@/º3f6º"8U3%båb¯4r*a„qrc|¥¥=uà4µ²w"e%:m0ÇG/|K_ 0,Ò?-p?´ 9 ‘/:¦ $¢ØuÛ|‹hOvñvçkqë/UEI†.†ý9æjþ!`r2lh"r#Év’>tc@T:áC6ÿgUhAg,<±ðfÎ.`¬(~¸dr)¤¬ ó `DI2ö >å(t¥{w¯®ýEAqÎ`Bn{¶2p(aµb96!69ÒCÞAXd=mcltå§;60J42ÝMÊË l`;7=)¶e§%!¸:{=95îl1>¬l¢ik`=~.<Dtjf,rÿaEoQeØd?P@Ä 6äT­3óvc,0Rà‰nlÁ÷:L66wqpwº"]\L(Cal›g¤³1„1<9ŒbvœŒàQf(Tr?m *Tsd2¬@~àvEÓÓ»_/\Wy/f‚xë65J4cMhz'à-5x5Ih0r&/·pr}%såäQ;mç#
+,‡Â$]ìy?°p½¬(#frl }´•"#,1§@¬’Ã¯vtqëdosôkoz¢ªAxXsu³39#K5UØh™â99¤9¾21}eóã!9”·P9"½#œ¹8nq'f8"f"#+]<iBF\d[o=02oxi³+ 4 	@2±puêD%ø°"$kXrr%c1©ÏnÝXYZ;jyç$–,b÷ü©@$pr)4ìµ¸-;­"4107pH<C0 ”S®z\-%šARæ:w8wwå 1È9œ0ì-¥³/$2X1"n`ðX`4¥6p’`bP)NAÐiD¬>*p8tke"x)pz 6u<>b0i4q)tòs¢Ô|og3)ª~J^¤hfÏ1521ed!v  2´01P´<2	6bVï|W\Íxabï3wH!>]IDU40Ma4$ E`1=·mG¨0žåmjm,Iøw²Âñ_Eø c6#mCd&î[:;03H%ð?$8§=¬ ¹(2<®i<;nñ}Tã¼EPr³gtgGjF?e(L%Ê¤:3Ñs)á)7$m3nueWå9I!Å"!(ÏÒE8%(NgbD"p*­h&®›³£6å.‚:²©<,3±0.r•²ì°f6<bbUä !ÈDXr<MswakjUEIÅ¬:f&1aôròè6¯¢ ð't?ìVåð^/| ï™¨8;âaÛe&].‰ KeleY9Z€;>/x‘ò7xùA"p5Œ08)l.Mop5ä’i-è|"aòqyKlÕuGl=¤{KFãxc$l73}a|6@$ui;àâMébd\9¿òÁg1,7œÍœ
+ÃeLf	ñ 8À80²±,	<30,8(,’e_(ãubçdjûw#vjl2.Tønãdreí/à×`YØ-*ed´=0…¤Påw÷¤bí=³4¥,8yº±­¹40n…»v0I'—"]<ÞAoz,C1xp¶)¾s|?Td( vö%¤ºêxuzj qÀòu3yùïÎAG&/¼2@61¤8w)59åaM46%7l¸S9°_dQgl=ã!m•7³czo
+çNäÛy29=²´4–¶#n˜½*³o',B33ìd!D­Xt'F!p2%ys`çlEüCÎfqEËàñ1¶h-Dîe¤-%ó?+9*7çl`(0<4tkQqn`åkCíäîK°u1<9$`7Þ"20
+> '(ˆt¨/2âÑn ?übi•*ùðeQ÷yÏÓI¬->#84ö-¥½49-o4AP-01'8)1aEV°82DW¦7)1 ö_- QuJþ”2±», ¢0¸Œa%ê(|!3$4"óuFq4"oSd1mÏo6ìAÜptuC±)wN]”qP$$3s}k>hah(GÅ6q5t.&=c!õ¨Oc´Vfxe).8¢ ¿,¨CmLæKã5
+¤­&ò(Ù5è. p 2Fwxm"mÔhlpåsñSfo×qãäi;¢5±¥Œw&9øó"i8/495k+14-ò[[;?56+v*Ùørî 
+b0(360)6ðw  x0•¥$R}-8¬ 0I&pñVb|ExT2uzñxo>MÝ]Ä±¾4>ea<81v²my*'h&f/nö2,xa3¤S#÷HšÖc*MhßEè~]3<5=%021- þqôN-1Ú,vvi`Jl5h–VlIürÏe³-glyIvEu–å(r+4*s2'q°§4 SQz½êc=)m£0&ib6o2õ0ã
+èu,gålm{ó¦Á¬`axU-â5';(", 4³-!Êjþ41"KU}ø#gðqhh~6 p.&3§2cÓC²a¬²91(/tbb§=ëÓ¾³,œtI;7²3?c*ùüMÓqýeY›67w¼ 3"¥£3{¡(>²·1¬ &Tp~"lelæ2bsi~×ÉÞ9
+à +7!jýõFÁ°0m=¯R°½2°dgaÍå&¡#'9b}ëEemlP,4p)ì$S3U<¶33.¼,{-"0¸h!b‹mðwð2¬{q=e7I&f]5JTm¾`20½ëë]O1d%g9¼°15a¾y?b7am&373'aÛ¦y?_CGemIq38ý @21=„(%2(>°y	¤ z ‚Ôgx~6 tVö`r2agÿDQY@í|b¡æi&c0©³1%4³$pTG}ìb;8,9!Íu;4àõ",ªƒqhl957q$( ©58l0=3Du3, 34, "Subsubsection",ExpressionUUID->"096eae0f-31d6-4446-877a-b6450529a14a"],
+Cell[16248, 361, 2285, 66, 38, "Text",ExpressionUUID->"3a55d09e-f85a-426a-b826-5f017e02767c"],
+Cell[18536, 429, 304, 6, 48, "Input",ExpressionUUID->"ea53c53e-5ebf-4658-94d5-0c4a7c52504b"],
+Cell[18843, 437, 592, 12, 22, "Text",ExpressionUUID->"c927c77b-f5c7-4ef8-815d-b77051dbd26e"],
+Cell[19438, 451, 2107, 59, 62, "Text",ExpressionUUID->"efbe74d8-d2a9-4052-80d1-3a692b8bb61f"],
+Cell[21548, 512, 501, 9, 22, "Text",ExpressionUUID->"a4521cfb-953e-470b-b215-d2925644f53b"],
+Cell[22052, 523, 177, 3, 48, "Input",ExpressionUUID->"114b07a4-87d5-42a5-a548-ea6643eb621d"],
+Cell[22232, 528, 1279, 33, 26, "Text",ExpressionUUID->"b68b8c26-1691-4484-b958-e05ed266e78f"],
+Cell[23514, 563, 1712, 46, 62, "Text",ExpressionUUID->"90827acb-d39b-4b23-b8df-2ff5677ebf74"],
+Cell[25229, 611, 951, 19, 56, "Text",ExpressionUUID->"5ec24f9f-d938-4f14-95ae-35ce09d725f2"],
+Cell[26183, 632, 227, 4, 48, "Input",ExpressionUUID->"67fb9094-98b5-4a46-b46d-92b93f0c60e3"],
+Cell[26413, 638, 543, 8, 22, "Text",ExpressionUUID->"0e5d3859-a697-401b-80b1-3dd0662dd6db"],
+Cell[26959, 648, 374, 6, 48, "Input",ExpressionUUID->"b42a2698-488c-4f7c-ba67-bcaab5fbeb4b"],
+Cell[27336, 656, 875, 17, 22, "Text",ExpressionUUID->"2efc0dbb-9942-427c-8411-a973c15c5018"],
+Cell[28214, 675, 225, 4, 48, "Input",ExpressionUUID->"de75fa2e-ba26-411d-8014-07862e1b3696"],
+Cell[28442, 681, 621, 9, 22, "Text",ExpressionUUID->"908c6b57-ec42-4e72-b338-5ea69bf8ca76"],
+Cell[29066, 692, 152, 3, 48, "Input",ExpressionUUID->"8965565b-38d3-4342-a153-e0a48c81cb9d"]
+}
+]
+*)
+
