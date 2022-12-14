@@ -1,16 +1,16 @@
 Por motivos de privacidad, el archivo Excel con las respuestas al cuestionario no se ha adjuntado. 
 
 
-ANÁLISIS UNIVARIANTE: VARIABLES NUMÉRICAS Y DE ESCALA LIKERT
+# ANÁLISIS UNIVARIANTE: VARIABLES NUMÉRICAS Y DE ESCALA LIKERT
 
 Nº DIARIO DE COMIDAS
 estos son los resultados obtenidos:
-#     vars  n       mean   sd     min   max  range   se
-# X1    1   99     3.71   0.93    2     5     3      0.09
+     vars  n       mean   sd     min   max  range   se
+ X1    1   99     3.71   0.93    2     5     3      0.09
 Concluímos que en nuestra aplicación, no tendría sentido ofrecer más de 5 recetas para comidas diarias y que, al menos, deberíamos ofrecer recetas para 3 comidas diarias.
 
 
-ANÁLISIS BIVARIANTE
+# ANÁLISIS BIVARIANTE
 Propósito del test: decidir si dos variables están relacionadas o no	
 
 H0: La proporción de personas que usaría nuestra aplicación es independiente de la proporción de personas que viven con sus padres
