@@ -16,7 +16,6 @@ Concluímos que en nuestra aplicación, no tendría sentido ofrecer más de 5 re
 Propósito del test: decidir si dos variables están relacionadas o no	
 
 H0: La proporción de personas que usaría nuestra aplicación es independiente de la proporción de personas que viven con sus padres
-
 H1: La proporción de personas que usaría nuestra aplicación es diferente si viven con sus padres o no
 p-value=0.882 > 0,05
 No tenemos pruebas suficientes para rechazar la hipótesis nula, no podemos suponer una independencia entre las variables. 
