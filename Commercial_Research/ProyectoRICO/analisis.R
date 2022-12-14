@@ -3,8 +3,7 @@
 #
 #   PROYECTO: ANÁLISIS DE LOS DATOS DE LA ENCUESTA
 #
-#     Se proporciona el archivo con los datos recogidos
-#     Cuestionario: https://docs.google.com/forms/d/12gw9VKNHcb7Zv3u5tDXX9i9sd_nSuJXGcNsOaZiNXgo/edit#question=651350677&field=1871292736
+#     
 #
 ################################################################################
 
