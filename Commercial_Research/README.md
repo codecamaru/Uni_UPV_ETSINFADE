@@ -12,7 +12,7 @@ estos son los resultados obtenidos:
 Concluímos que en nuestra aplicación, no tendría sentido ofrecer más de 5 recetas para comidas diarias y que, al menos, deberíamos ofrecer recetas para 3 comidas diarias.
 
 
-# ANÁLISIS BIVARIANTE X^2
+# ANÁLISIS BIVARIANTE χ²
 Propósito del test: decidir si dos variables están relacionadas o no	
 
 H0: La proporción de personas que usaría nuestra aplicación es independiente de la proporción de personas que viven con sus padres       
