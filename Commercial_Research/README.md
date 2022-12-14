@@ -7,7 +7,7 @@ Nº DIARIO DE COMIDAS
 estos son los resultados obtenidos:
 
      vars  n       mean   sd     min   max  range   se
- X1    1   99     3.71   0.93    2     5     3      0.09
+      1    99     3.71   0.93    2     5     3      0.09
  
 Concluímos que en nuestra aplicación, no tendría sentido ofrecer más de 5 recetas para comidas diarias y que, al menos, deberíamos ofrecer recetas para 3 comidas diarias.
 
