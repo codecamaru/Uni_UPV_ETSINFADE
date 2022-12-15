@@ -3,7 +3,8 @@
 Carolina Alba Marugan Rubio
 # REQ/REP
 – terminal 1) node servidor.js A 9990 2 Hola 	
-– terminal 2) node cliente1.js localhost 9990 Pepe	
+– terminal 2) node cliente1.js localhost 9990 Pepe
+
 El programa Cliente1 envía 4 peticiones con el bucle for avisando de ello a consola. Cuando procesa la respuesta, la imprime, y si es la 4 iteración, se despide. 	
 Nota: la función lineOrdenes de tsr.js crea variables globales asociadas a los parámetros pasados por orden en el terminal. En server la variable segundos indica cada cuántos segundos mandas la respuesta	
 •	Comprueba si el orden en que arrancamos los componentes afecta al resultado. 	
