@@ -1,45 +1,46 @@
 ![image](https://user-images.githubusercontent.com/54485798/207831873-dd7a87a5-f8c1-43b6-b87b-99c0875fc261.png)
+
 Carolina Alba Marugan Rubio
 # REQ/REP
-– terminal 1) node servidor.js A 9990 2 Hola 
-– terminal 2) node cliente1.js localhost 9990 Pepe
-El programa Cliente1 envía 4 peticiones con el bucle for avisando de ello a consola. Cuando procesa la respuesta, la imprime, y si es la 4 iteración, se despide. 
-Nota: la función lineOrdenes de tsr.js crea variables globales asociadas a los parámetros pasados por orden en el terminal. En server la variable segundos indica cada cuántos segundos mandas la respuesta
-•	Comprueba si el orden en que arrancamos los componentes afecta al resultado. 
-El orden no afecta. Por un lado, el método connect() es asíncrono, no bloqueante. Así, Aunque se haga primero bind() y después connect() o alrevés, el código continúa. En adición a este punto, cito pdf: “No hay restricciones sobre el orden en que se realice bind() y connect(). En los dos posibles órdenes (bind() precede a connect() o connect() precede a bind()), la conexión se establece correctamente. Además, tampoco hay restricciones sobre el tiempo que pueda transcurrir entre las llamadas a esas operaciones.”. Por otro lado, al haber únicamente un Cliente, la única petición que le llegará al servidor será de este, así que el orden de respuesta no variará con respecto a si otro cliente mandara primero la petición, porque el orden de llegada a REP es FIFO, y teniendo en cuenta que se trata de un socket síncrono, hasta que el server no le responda a ese cliente, no atenderá más peticiones. 
-•	¿Qué ocurre si pasamos un número de argumentos incorrecto? ¿y si están fuera de orden?
-Si le pones menos o más argumentos al cliente te dice “parámetros incorrectos” y te indica cual debe ser el uso. Lo mismo hace el servidor
-Si están fuera de orden el cliente no puede conectarse porque no encuentra el puerto al que conectarse, pero el servidor funciona solo que no interpreta tiempo de espera para dar respuesta. Claro que depende de qué parámetros cambies. 
-•	En relación con los mensajes multi-segmento: 
-· ¿De qué forma construye el emisor un mensaje multi-segmento? 
-Con req.send([nombre,i]) le pasa un array
-· ¿Cómo accede el receptor a los distintos segmentos del mensaje?
-Cuando recibe un mensaje en el listener, ya recibe cada segmento como un parámetro. De manera que en el callback los distingue por argumentos de la función, solamente tiene que llamar al parámetro. 
-•	El cliente finaliza tras recibir la respuesta a la cuarta petición. ¿Cuando termina el servidor?
-El servidor solo termina si desde la terminal haces cntrl+C, llamando a la función adios()
-
-– terminal 1) node servidor.js A 9990 2 Hola 
-– terminal 2) node servidor.js B 9991 2 Hello 
-– terminal 3) node cliente2.js localhost 9990 localhost 9991 Pepe
-Nota: el cliente2.js hace 2 operaciones conecta()
-•	Comprueba si el orden de arranque afecta al resultado. Indica la razón
-Afecta en cierta medida.  El cliente siempre manda primero la petición al servidor que tiene primero en los parámetros de terminal. Esto es porque se conecta primero al que tiene ipServidor1. Independientemente del orden de arranque, siempre manda mensaje primero al que primero se conecta. Es por esto, que hasta que no reciba la respuesta del primero al que envía el mensaje, por mucho que arranque el otro servidor, hasta que no arranque el primero y le responda, no mandará el próximo mensaje al segundo servidor. También, aunque arranque primero el servidor al que primero envía mensaje y este me responda, hasta que no arranque el segundo, no continuará con los siguientes envíos. 
-En resumen, afecta tanto el orden de arranque como el orden en el que el cliente se conecta a los servidores. 
-•	¿Qué ocurre si ambos servidores reciben el mismo número de port?
-Sí que puedes conectarte dos veces al mismo puerto, como cliente. Recibes las peticiones exactamente igual, pero viniendo del mismo servidor. Pero si como servidor intentas conectarte a un puerto en el que ya has hecho antes bind(), te sale error “address already in use”.
-•	¿Qué ocurre si los dos servidores reciben un valor de segundos distinto (ej 1 y 3 respectivamente)?. ¿Afecta al orden en que se responde al cliente?
-Ocurre lo mismo que antes pero la que tiene 3 segundos tarda más. Pero claro que no influye en el orden de llegada de la respuesta, porque al ser un socket req, no puede mandar la siguiente petición hasta que no le ha llegado la respuesta de la petición que ya ha mandado. 
-•	La práctica totalidad del tiempo lo consumen los servidores ¿Conseguimos reducir a la mitad el tiempo de ejecución del cliente al utilizar 2 servidores?
-No, porque no has paralelizado ninguna tarea. Hasta que no recibes la respuesta a tu petición, no puedes mandar la siguiente. Por tanto, te da igual si tienes dos servidores, el tiempo de respuesta y petición va a ser el mismo. 
-•	Si queremos usar 3 servidores, ¿hay que modificar el código del cliente?
-Sí, porque se tiene que conectar a él, y cuando introduzcamos la orden por el terminal, deberemos poner también la dirección y puerto del tercer servidor. Pero el resto, no cambia. 
-•	Con un número de peticiones par, ¿podemos garantizar que cada servidor atiende la misma cantidad de peticiones?
-Si tenemos 2 servidores, número par, y el número de peticiones es un múltiplo de 2, también número par, entonces podemos asegurar que cada servidor atiende la misma cantidad de peticiones. Ya que, el algoritmo que sigue el socket req para enviar peticiones es el Round-Robin, garantizando, en este caso, un reparto igual en la carga. 
-
-– terminal 1) node servidor.js A 9990 2 Hola 
-– terminal 2) node cliente1.js localhost 9990 Pepe 
-– terminal 3) node cliente1.js localhost 9990 Ana
-•	Comprueba si el orden en que arrancamos los componentes afecta al resultado. Indica la razón
+– terminal 1) node servidor.js A 9990 2 Hola 	
+– terminal 2) node cliente1.js localhost 9990 Pepe	
+El programa Cliente1 envía 4 peticiones con el bucle for avisando de ello a consola. Cuando procesa la respuesta, la imprime, y si es la 4 iteración, se despide. 	
+Nota: la función lineOrdenes de tsr.js crea variables globales asociadas a los parámetros pasados por orden en el terminal. En server la variable segundos indica cada cuántos segundos mandas la respuesta	
+•	Comprueba si el orden en que arrancamos los componentes afecta al resultado. 	
+El orden no afecta. Por un lado, el método connect() es asíncrono, no bloqueante. Así, Aunque se haga primero bind() y después connect() o alrevés, el código continúa. En adición a este punto, cito pdf: “No hay restricciones sobre el orden en que se realice bind() y connect(). En los dos posibles órdenes (bind() precede a connect() o connect() precede a bind()), la conexión se establece correctamente. Además, tampoco hay restricciones sobre el tiempo que pueda transcurrir entre las llamadas a esas operaciones.”. Por otro lado, al haber únicamente un Cliente, la única petición que le llegará al servidor será de este, así que el orden de respuesta no variará con respecto a si otro cliente mandara primero la petición, porque el orden de llegada a REP es FIFO, y teniendo en cuenta que se trata de un socket síncrono, hasta que el server no le responda a ese cliente, no atenderá más peticiones. 	
+•	¿Qué ocurre si pasamos un número de argumentos incorrecto? ¿y si están fuera de orden?	
+Si le pones menos o más argumentos al cliente te dice “parámetros incorrectos” y te indica cual debe ser el uso. Lo mismo hace el servidor	
+Si están fuera de orden el cliente no puede conectarse porque no encuentra el puerto al que conectarse, pero el servidor funciona solo que no interpreta tiempo de espera para dar respuesta. Claro que depende de qué parámetros cambies. 	
+•	En relación con los mensajes multi-segmento: 	
+· ¿De qué forma construye el emisor un mensaje multi-segmento? 	
+Con req.send([nombre,i]) le pasa un array	
+· ¿Cómo accede el receptor a los distintos segmentos del mensaje?	
+Cuando recibe un mensaje en el listener, ya recibe cada segmento como un parámetro. De manera que en el callback los distingue por argumentos de la función, solamente tiene que llamar al parámetro. 	
+•	El cliente finaliza tras recibir la respuesta a la cuarta petición. ¿Cuando termina el servidor?	
+El servidor solo termina si desde la terminal haces cntrl+C, llamando a la función adios()	
+	
+– terminal 1) node servidor.js A 9990 2 Hola 	
+– terminal 2) node servidor.js B 9991 2 Hello 	
+– terminal 3) node cliente2.js localhost 9990 localhost 9991 Pepe		
+Nota: el cliente2.js hace 2 operaciones conecta()	
+•	Comprueba si el orden de arranque afecta al resultado. Indica la razón	
+Afecta en cierta medida.  El cliente siempre manda primero la petición al servidor que tiene primero en los parámetros de terminal. Esto es porque se conecta primero al que tiene ipServidor1. Independientemente del orden de arranque, siempre manda mensaje primero al que primero se conecta. Es por esto, que hasta que no reciba la respuesta del primero al que envía el mensaje, por mucho que arranque el otro servidor, hasta que no arranque el primero y le responda, no mandará el próximo mensaje al segundo servidor. También, aunque arranque primero el servidor al que primero envía mensaje y este me responda, hasta que no arranque el segundo, no continuará con los siguientes envíos. 	
+En resumen, afecta tanto el orden de arranque como el orden en el que el cliente se conecta a los servidores. 	
+•	¿Qué ocurre si ambos servidores reciben el mismo número de port?	
+Sí que puedes conectarte dos veces al mismo puerto, como cliente. Recibes las peticiones exactamente igual, pero viniendo del mismo servidor. Pero si como servidor intentas conectarte a un puerto en el que ya has hecho antes bind(), te sale error “address already in use”.	
+•	¿Qué ocurre si los dos servidores reciben un valor de segundos distinto (ej 1 y 3 respectivamente)?. ¿Afecta al orden en que se responde al cliente?	
+Ocurre lo mismo que antes pero la que tiene 3 segundos tarda más. Pero claro que no influye en el orden de llegada de la respuesta, porque al ser un 	socket req, no puede mandar la siguiente petición hasta que no le ha llegado la respuesta de la petición que ya ha mandado. 
+	•	La práctica totalidad del tiempo lo consumen los servidores ¿Conseguimos reducir a la mitad el tiempo de ejecución del cliente al utilizar 2 servidores?	
+No, porque no has paralelizado ninguna tarea. Hasta que no recibes la respuesta a tu petición, no puedes mandar la siguiente. Por tanto, te da igual si tienes dos servidores, el tiempo de respuesta y petición va a ser el mismo. 	
+•	Si queremos usar 3 servidores, ¿hay que modificar el código del cliente?	
+Sí, porque se tiene que conectar a él, y cuando introduzcamos la orden por el terminal, deberemos poner también la dirección y puerto del tercer servidor. Pero el resto, no cambia. 	
+•	Con un número de peticiones par, ¿podemos garantizar que cada servidor atiende la misma cantidad de peticiones?	
+Si tenemos 2 servidores, número par, y el número de peticiones es un múltiplo de 2, también número par, entonces podemos asegurar que cada servidor atiende la misma cantidad de peticiones. Ya que, el algoritmo que sigue el socket req para enviar peticiones es el Round-Robin, garantizando, en este caso, un reparto igual en la carga. 	
+	
+– terminal 1) node servidor.js A 9990 2 Hola 	
+– terminal 2) node cliente1.js localhost 9990 Pepe 	
+– terminal 3) node cliente1.js localhost 9990 Ana	
+•	Comprueba si el orden en que arrancamos los componentes afecta al resultado. Indica la razón	
 Sí que afecta, pues el algoritmo que sigue el socket rep para atender peticiones es fair queueing, FIFO. Así, la petición que le llegue antes será la que primero conteste. Puede ocurrir que atienda dos peticiones seguidas del mismo cliente. Y que, habiendo arrancado primero un cliente1 y luego cliente2 y luego el servidor1, me atienda primero al cliente2. 
 •	¿Podemos asegurar que cada cliente recibe únicamente la respuestas a sus propias peticiones?. Indica la razón
 Sí lo puedes asegurar. Ya que, el servidor, no puede atender otra petición hasta que no ha respondido la actual. Por tanto, por muchos mensajes que manden otros clientes, el servidor me responderá, y después recibirá su siguiente petición. De esta manera, otras peticiones no interfieren en la respuesta que me da el servidor. 
