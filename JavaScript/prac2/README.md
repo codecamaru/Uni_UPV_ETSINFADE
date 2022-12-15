@@ -1,3 +1,4 @@
+![image](https://user-images.githubusercontent.com/54485798/207831873-dd7a87a5-f8c1-43b6-b87b-99c0875fc261.png)
 Carolina Alba Marugan Rubio
 # REQ/REP
 – terminal 1) node servidor.js A 9990 2 Hola 
