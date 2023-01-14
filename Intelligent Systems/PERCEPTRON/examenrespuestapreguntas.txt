@@ -1,0 +1,15 @@
+En mi caso, tengo dos scripts, uno al que se le puede pasar la k por parámetro y otro al que no (experimentk.py y experiment.py).
+Bastaría con pasarle la k = 1200 por parámetro, como se mostrará a continuación.
+El resto de parámetros son los mismos, pues el script experiment es genérico y no depende del número 
+de columnas y filas del que disponga el dataset, es decir, no hay que indicarle explícitamente cuántas filas 
+y columnas tiene el dataset. La normalización de los dígitos a 28x28 nos sería más relevante si quisieramos visualizar las muestras. 
+En este caso solo queremos entrenarlas. 
+Se ha elaborado un script runEXAMdataset.sh para lanzar las diferentes ejecuciones. Los resultados también se mostrarán a continuación. 
+
+Para el caso de la variación de a , vemos que a partir de a > 100 los resultado no mejoran y ya hemos encontrado convergencia, obteniendo además el 
+menor error estimado Ete%=14.7 que no supera el 18%. tendríamos un a=100 b= 0.1 y IC = [12.4,17.0] k=76
+
+Para el caso de la variación de b, los mejores parámetros serían: a=0.1 b=10 k=111 y IC = [12.7,17.3] Ete%=15 < 18%. Ya que, aunque hayamos obtenido convergencia antes, el numero de iteraciones 
+es menor y el margen es mayor, lo que nos daría un mayor ratio b/a.
+
+Ante ambos resultados, con los del segundo caso el ratio sería mayor con una b mayor y una a menor, siendo la diferencia del error estimado entre una y otra pequeña. 
