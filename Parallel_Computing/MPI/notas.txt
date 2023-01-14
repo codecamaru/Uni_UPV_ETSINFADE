@@ -1,0 +1,26 @@
+MPI_Init(&argc, &argv) // nº argumentos y argumentos n arg1 arg2 arg3 ... argn
+
+MPI_Reduce(&mypi, &pi, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD); // longitud datos 1, para unificar estructura en difrentes arquitecturas se pone MPI_DOUBLE
+
+1.2 Cálculo de Pi : yo que soy el 0 tengo que recibir del P1 y P2 (Recv, Pi o bien any)
+los otros deben enviar (se crean nprocesos-1 mensajes) 
+
+MPI_Send envío colectivo / MPI_Recv me permite recibir
+MPI_Send(void *senbuf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm)
+MPI_Recv(void *recbuf, int count, MPI_Datatype datatype, int source, int tag, MPI_Comm comm,
+MPI_Status *status) // count en una programación mas compleja podría no ser el mismo
+
+ANY_SOURCE me permite recibir en cualquier orden
+MPI_STATUS_IGNORE(status) // si no quieres saber el estado
+
+1.3 El programa Ping-Pong
+divido tiempo total entre NREPS
+MEDIANTE FOR DESDE 1 HASTA N BYTES
+EL P0 CALCULA TIEMPO MEDIO
+
+
+
+
+
+
+EN EL EXAMEN SE PREGUNTA POR TODO LO QUE HAS HECHO EN LOS EJERCICIOS DE LA PRACT (ES TEST)
