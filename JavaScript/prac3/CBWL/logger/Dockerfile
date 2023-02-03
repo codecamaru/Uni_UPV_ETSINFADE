@@ -1,0 +1,9 @@
+FROM tsr2223/ubuntu-zmq
+COPY ./tsr.js tsr.js
+RUN mkdir logger
+WORKDIR logger
+COPY ./logger.js mylogger.js
+#ruta del directorio del contenedor
+VOLUME /tmp/cbwlog 
+EXPOSE 9995
+CMD node mylogger 9995 $LOGGER_DIR/logs
