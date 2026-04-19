@@ -21,7 +21,7 @@
 | [ Statistical Methods](#-statistical-methods-for-economy) | Stats / Quantitative Methods | R / Excel |
 | [ Commercial Research](#-commercial-research) | Business & Research | Various |
 | [ Mathematical Models](#-mathematical-models-for-business) | Optimisation / Operations Research | Various |
-| [ AIC](#-aic) | Advanced Intelligence & Computing | Various |
+| [ AIC](#-aic) | Computer Architecture and Engineering | Assembly |
 
 ---
 
@@ -167,7 +167,7 @@ Operations research and mathematical optimisation applied to business administra
 
 ## AIC
 
-Labs and practicals from the Advanced Intelligence & Computing module.
+Labs and practicals from the Computer Architecture and Engineering module.
 
 ---
 
